@@ -9,6 +9,7 @@
 #include "mime_types.h"
 #include "crypto.h"
 #include <list>
+#include <csignal>
 
 using namespace boost::filesystem;
 
@@ -240,8 +241,8 @@ void checksync (std::string path, const std::string& auth, std::string email) {
         std::string length = boost::lexical_cast<std::string>(content.size());
         std::string typecont = mime_types::extension_to_type(extension);
         std::string hashcontent = CalcSha512(content);
-        client c(io_context, "127.0.0.1", file.path().string(), auth, email, method, length, typecont,
-                 hashcontent);
+        client c{io_context, "127.0.0.1", file.path().string(), auth, email, method, length, typecont,
+                 hashcontent};
         io_context.run();
 
         //Controllo il codice di errore:
@@ -265,15 +266,15 @@ void post_method (std::string path, const std::string& auth, std::string email, 
         content.append(buf, is.gcount());
     std::string length = boost::lexical_cast<std::string>(content.size());
     std::string typecont = mime_types::extension_to_type(extension);
-    client c(io_context, "127.0.0.1", path, auth, email, method, length, typecont,
-             content);
+    client c{io_context, "127.0.0.1", path, auth, email, method, length, typecont,
+             content};
     io_context.run();
 }
 
 void delete_method (std::string path, const std::string& auth, std::string email, std::string extension) { //Creiamo il metodo per la delete
     boost::asio::io_context io_context;
     std::string method = "DELETE";
-    client c(io_context, "127.0.0.1", path, auth, email, method, "", "", " ");
+    client c{io_context, "127.0.0.1", path, auth, email, method, "", "", " "};
     io_context.run();
 }
 
@@ -284,7 +285,7 @@ void reconnection (const std::string& auth, std::string email) { ///Creiamo il m
         if(check_connection == 0){
             std::cout << "Try to reconnect..." << "\n";
             boost::asio::io_context io_context;
-            client c(io_context, "127.0.0.1", "/reconnect", auth, email, "POST", "", "", "");
+            client c{io_context, "127.0.0.1", "/reconnect", auth, email, "POST", "", "", ""};
             io_context.run();
         }
         timer.expires_at(timer.expires_at() + boost::posix_time::seconds(30));
@@ -292,6 +293,14 @@ void reconnection (const std::string& auth, std::string email) { ///Creiamo il m
     };
     timer.async_wait(tick);
     io_context1.run();
+}
+
+
+void signalHandler( int signum) {
+    std::cout << "\n" << "Closing the applications..."<<"\n";
+    // cleanup and close up stuff here
+    // terminate program
+    exit(signum);
 }
 
 int main(int argc, char* argv[])
@@ -314,7 +323,7 @@ int main(int argc, char* argv[])
         std::string passwdhash = CalcSha512(passwd);
         auth = CalcSha512(email + passwdhash);
         base64auth = base64(auth);
-        client c(io_context, "127.0.0.1", "/login", base64auth, email, "POST", "", "", "");
+        client c{io_context, "127.0.0.1", "/login", base64auth, email, "POST", "", "", ""};
         io_context.run();
         if(check_connection == 0){
             std::cout << "Server down. Try to connect later..." << "\n";
@@ -359,6 +368,10 @@ int main(int argc, char* argv[])
         while(running_) {
          // Wait for "delay" milliseconds
          std::this_thread::sleep_for(delay) ;
+
+         //per uscire dall'applicazione
+         signal(SIGINT, signalHandler);
+
 
          if(check_connection == 1){ //prima connessione che va a buon fine dopo l'errore
           std::future<void> f2 = std::async(std::launch::async, checksync, path, base64auth, email);

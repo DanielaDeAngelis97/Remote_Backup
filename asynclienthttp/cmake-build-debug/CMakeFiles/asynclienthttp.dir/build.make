@@ -129,8 +129,8 @@ asynclienthttp: CMakeFiles/asynclienthttp.dir/main.cpp.o
 asynclienthttp: CMakeFiles/asynclienthttp.dir/mime_types.cpp.o
 asynclienthttp: CMakeFiles/asynclienthttp.dir/crypto.cpp.o
 asynclienthttp: CMakeFiles/asynclienthttp.dir/build.make
-asynclienthttp: /home/daniela/Scaricati/boost_1_74_0/stage/lib/libboost_system.so
-asynclienthttp: /home/daniela/Scaricati/boost_1_74_0/stage/lib/libboost_filesystem.so
+asynclienthttp: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
+asynclienthttp: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
 asynclienthttp: CMakeFiles/asynclienthttp.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/daniela/CLionProjects/asynclienthttp/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable asynclienthttp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/asynclienthttp.dir/link.txt --verbose=$(VERBOSE)

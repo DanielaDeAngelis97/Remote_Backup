@@ -204,8 +204,8 @@ serverhttp: CMakeFiles/serverhttp.dir/request_handler.cpp.o
 serverhttp: CMakeFiles/serverhttp.dir/request_parser.cpp.o
 serverhttp: CMakeFiles/serverhttp.dir/server.cpp.o
 serverhttp: CMakeFiles/serverhttp.dir/build.make
-serverhttp: /home/daniela/Scaricati/boost_1_74_0/stage/lib/libboost_system.so
-serverhttp: /home/daniela/Scaricati/boost_1_74_0/stage/lib/libboost_filesystem.so
+serverhttp: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
+serverhttp: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
 serverhttp: CMakeFiles/serverhttp.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/daniela/CLionProjects/serverhttp/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable serverhttp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/serverhttp.dir/link.txt --verbose=$(VERBOSE)
