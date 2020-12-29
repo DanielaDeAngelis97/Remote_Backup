@@ -1,1 +1,3 @@
-/usr/bin/c++  -g   CMakeFiles/asynclienthttp.dir/main.cpp.o CMakeFiles/asynclienthttp.dir/mime_types.cpp.o CMakeFiles/asynclienthttp.dir/crypto.cpp.o  -o asynclienthttp  /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0 /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0 -lpthread -lboost_thread -lboost_system -lstdc++fs -lssl -lcrypto -lssl -lcrypto 
+"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\asynclienthttp.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\asynclienthttp.dir/objects.a @CMakeFiles\asynclienthttp.dir\objects1.rsp
+C:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\asynclienthttp.dir/objects.a -Wl,--no-whole-archive  -o asynclienthttp.exe -Wl,--out-implib,libasynclienthttp.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\asynclienthttp.dir\linklibs.rsp

@@ -261,7 +261,7 @@ void checksync (std::string path, const std::string& auth, std::string email) {
     std::string m= "DELETE";
     std::string content = files_client;
     std::string length = boost::lexical_cast<std::string>(content.size());
-    client c{io_context2, "127.0.0.1", "/syncronization", auth, email, m, length, "",
+    client c{io_context2, "127.0.0.1", "/synchronization", auth, email, m, length, "",
              content};
     io_context2.run();
     std::cout << "Synchronization terminated" << "\n";
