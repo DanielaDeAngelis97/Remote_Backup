@@ -12,6 +12,7 @@
 #include "request.h"
 #include <filesystem>
 #include "crypto.h"
+#include <boost/algorithm/string.hpp>
 
 namespace http {
     namespace server3 {
@@ -134,6 +135,29 @@ namespace http {
                 }
             }
             else if(req.method=="DELETE") {
+                if (request_path == "/syncronization") {
+                    std::vector<std::string> paths_client;
+                    std::vector<std::string> path_to_control_server;
+                    std::vector<std::string> paths_to_delete;
+                    boost::split(paths_client, req.content, boost::is_any_of(";"));
+                    std::string path = doc_root_ + "/" + email + paths_client[0]; //rappresenta il path della cartella che abbiamo deciso di osservare lato client
+                    for (auto &file : std::filesystem::recursive_directory_iterator(path)) { //qui prendo i path contenuti
+                        /* Controllo se il singolo path del server è contenuto della lista del client */
+                        boost::split(path_to_control_server, file.path().string(), boost::is_any_of("prova"));
+                        std::cout << "PATH " << path_to_control_server[1];
+                        if (std::find(std::begin(paths_client), std::end(paths_client), path_to_control_server[1]) != std::end(paths_client)){
+                            // myinput is included in mylist.
+                        }else{
+                            paths_to_delete.push_back(file.path().string());
+                        }
+                    }
+                    if(paths_to_delete.size()!= 0) {
+                        for (int i = 0; i < paths_to_delete.size(); i++) {
+                            std::filesystem::remove_all(std::filesystem::path(paths_to_delete[i]));
+                        }
+                        rep.status = reply::accepted;
+                    }
+                } else {
                 std::string path = doc_root_ + "/" + email + "/" + request_path;
                 std::ifstream is(path.c_str(), std::ios::in | std::ios::binary);
                 if (is) {
@@ -142,6 +166,7 @@ namespace http {
                 } else {
                     rep.status = reply::not_found;
                 }
+            }
             }
         }
 

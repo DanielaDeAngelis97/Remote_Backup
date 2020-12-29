@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -95,7 +96,6 @@ private:
             check_connection=0; //la connessione non va a buon fine.
         }
     }
-
     void handle_write_request(const boost::system::error_code& err)
     {
         if (!err)
@@ -204,7 +204,6 @@ private:
     boost::asio::streambuf response_;
 
 };
-
 void checksync (std::string path, const std::string& auth, std::string email);
 void post_method (std::string path, const std::string& auth, std::string email, std::string extension);
 void delete_method (std::string path, const std::string& auth, std::string email, std::string extension);
@@ -224,34 +223,47 @@ void checksync (std::string path, const std::string& auth, std::string email) {
     deleted_files.clear();
 
     std::string method = "GET";
+    std::string files_client = path; //il primo path è il path generico che abbiamo deciso di osservare
     for (auto &file : std::filesystem::recursive_directory_iterator(path)) {
         boost::asio::io_context io_context;
-        std::cout << file.path().string() << "\n";
-        std::ifstream b(file.path().string().c_str(), std::ios::in | std::ios::binary);
+
+        std::string single_path = file.path().string();
+        files_client= files_client + ";" + single_path ;
+        std::replace(single_path.begin(), single_path.end(), '\\', '/');
+        std::cout<< single_path << "\n";
+
+        std::ifstream b(single_path.c_str(), std::ios::in | std::ios::binary);
         char buf[512];
         std::string content;
         while (b.read(buf, sizeof(buf)).gcount() > 0)
             content.append(buf, b.gcount());
-        std::size_t last_slash_pos = file.path().string().find_last_of("/");
-        std::size_t last_dot_pos = file.path().string().find_last_of(".");
+        std::size_t last_slash_pos = single_path.find_last_of("/");
+        std::size_t last_dot_pos = single_path.find_last_of(".");
         std::string extension;
         if (last_dot_pos != std::string::npos && last_dot_pos > last_slash_pos) {
-            extension = file.path().string().substr(last_dot_pos + 1);
+            extension = single_path.substr(last_dot_pos + 1);
         }
         std::string length = boost::lexical_cast<std::string>(content.size());
         std::string typecont = mime_types::extension_to_type(extension);
         std::string hashcontent = CalcSha512(content);
-        client c{io_context, "127.0.0.1", file.path().string(), auth, email, method, length, typecont,
+        client c{io_context, "127.0.0.1", single_path, auth, email, method, length, typecont,
                  hashcontent};
         io_context.run();
 
         //Controllo il codice di errore:
         if(c.statuscode==404 || c.statuscode==305){
             std::cout<< "Updating server database..." << "\n";
-            post_method (file.path().string(), auth, email, extension);
+            post_method (single_path, auth, email, extension);
         }
     }
 
+    boost::asio::io_context io_context2;
+    std::string m= "DELETE";
+    std::string content = files_client;
+    std::string length = boost::lexical_cast<std::string>(content.size());
+    client c{io_context2, "127.0.0.1", "/syncronization", auth, email, m, length, "",
+             content};
+    io_context2.run();
     std::cout << "Synchronization terminated" << "\n";
 }
 
@@ -277,7 +289,6 @@ void delete_method (std::string path, const std::string& auth, std::string email
     client c{io_context, "127.0.0.1", path, auth, email, method, "", "", " "};
     io_context.run();
 }
-
 void reconnection (const std::string& auth, std::string email) { ///Creiamo il metodo per effettuare la riconnessione al server
     boost::asio::io_context io_context1;
     boost::asio::deadline_timer timer(io_context1, boost::posix_time::seconds(30));
@@ -366,89 +377,91 @@ int main(int argc, char* argv[])
         std::future<void> f3 = std::async(std::launch::async, reconnection, base64auth, email);
 
         while(running_) {
-         // Wait for "delay" milliseconds
-         std::this_thread::sleep_for(delay) ;
+            // Wait for "delay" milliseconds
+            std::this_thread::sleep_for(delay) ;
 
-         //per uscire dall'applicazione
-         signal(SIGINT, signalHandler);
+            //per uscire dall'applicazione
+            signal(SIGINT, signalHandler);
+            if(check_connection == 1){ //prima connessione che va a buon fine dopo l'errore
+                std::future<void> f2 = std::async(std::launch::async, checksync, path, base64auth, email);
+            }
+            // Start monitoring a folder for changes and (in case of changes)
+            // run a user provided lambda function
+            try {
+                fw.start([base64auth, email, path](const std::string &path_to_watch, FileStatus status) -> void {
+                    // Sostituzione Slash Windows
+                    std::string single_path = path_to_watch;
 
+                    std::replace(single_path.begin(), single_path.end(), '\\', '/');
 
-         if(check_connection == 1){ //prima connessione che va a buon fine dopo l'errore
-          std::future<void> f2 = std::async(std::launch::async, checksync, path, base64auth, email);
-                }
-        // Start monitoring a folder for changes and (in case of changes)
-        // run a user provided lambda function
-        try {
-            fw.start([base64auth, email, path](const std::string &path_to_watch, FileStatus status) -> void {
-
-                if(check_connection == 1){ //prima connessione che va a buon fine dopo l'errore
-                    std::future<void> f4 = std::async(std::launch::async, checksync, path, base64auth, email);
-                }
-
-                // Process only regular files, all other file types are ignored
-                if (!std::filesystem::is_regular_file(std::filesystem::path(path_to_watch)) &&
-                    !std::filesystem::is_directory(std::filesystem::path(path_to_watch)) &&
-                    status != FileStatus::erased) {
-                    return;
-                }
-                // Determine the file extension.
-                std::size_t last_slash_pos = path_to_watch.find_last_of("/");
-                std::size_t last_dot_pos = path_to_watch.find_last_of(".");
-                std::string extension;
-                if (last_dot_pos != std::string::npos && last_dot_pos > last_slash_pos) {
-                    extension = path_to_watch.substr(last_dot_pos + 1);
-                }
-                switch (status) {
-                    case FileStatus::created: {
-                        if (std::filesystem::is_regular_file(std::filesystem::path(path_to_watch)))
-                            std::cout << "File created: " << path_to_watch << '\n';
-                        else
-                            std::cout << "Folder created: " << path_to_watch << '\n';
-                        try {
-                            post_method (path_to_watch, base64auth, email, extension);
-                        }
-                        catch (std::exception &e) {
-                            std::cout << "Exception: " << e.what() << "\n";
-                        }
+                    if(check_connection == 1){ //prima connessione che va a buon fine dopo l'errore
+                        std::future<void> f4 = std::async(std::launch::async, checksync, path, base64auth, email);
                     }
-                        break;
-                    case FileStatus::modified: {
-                        if (extension != "")
-                            std::cout << "File modified: " << path_to_watch << '\n';
-                        else
-                            std::cout << "Folder modified: " << path_to_watch << '\n';
-                        try {
-                            post_method (path_to_watch, base64auth, email, extension);
-                        }
-                        catch (std::exception &e) {
-                            std::cout << "Exception: " << e.what() << "\n";
-                        }
+
+                    // Process only regular files, all other file types are ignored
+                    if (!std::filesystem::is_regular_file(std::filesystem::path(single_path)) &&
+                        !std::filesystem::is_directory(std::filesystem::path(single_path)) &&
+                        status != FileStatus::erased) {
+                        return;
                     }
-                        break;
-                    case FileStatus::erased: {
-                        if (extension != "")
-                            std::cout << "File erased: " << path_to_watch << '\n';
-                        else
-                            std::cout << "Folder erased: " << path_to_watch << '\n';
-                        try {
-                            delete_method (path_to_watch, base64auth, email, extension);
-                            if(check_connection == 0) {
-                                deleted_files.push_back(path_to_watch);
+                    // Determine the file extension.
+                    std::size_t last_slash_pos = single_path.find_last_of("/");
+                    std::size_t last_dot_pos = single_path.find_last_of(".");
+                    std::string extension;
+                    if (last_dot_pos != std::string::npos && last_dot_pos > last_slash_pos) {
+                        extension = single_path.substr(last_dot_pos + 1);
+                    }
+                    switch (status) {
+                        case FileStatus::created: {
+                            if (std::filesystem::is_regular_file(std::filesystem::path(single_path)))
+                                std::cout << "File created: " << single_path << '\n';
+                            else
+                                std::cout << "Folder created: " << single_path << '\n';
+                            try {
+                                post_method (single_path, base64auth, email, extension);
+                            }
+                            catch (std::exception &e) {
+                                std::cout << "Exception: " << e.what() << "\n";
                             }
                         }
-                        catch (std::exception &e) {
-                            std::cout << "Exception: " << e.what() << "\n";
+                            break;
+                        case FileStatus::modified: {
+                            if (extension != "")
+                                std::cout << "File modified: " << single_path << '\n';
+                            else
+                                std::cout << "Folder modified: " << single_path << '\n';
+                            try {
+                                post_method (single_path, base64auth, email, extension);
+                            }
+                            catch (std::exception &e) {
+                                std::cout << "Exception: " << e.what() << "\n";
+                            }
                         }
+                            break;
+                        case FileStatus::erased: {
+                            if (extension != "")
+                                std::cout << "File erased: " << single_path << '\n';
+                            else
+                                std::cout << "Folder erased: " << single_path << '\n';
+                            try {
+                                delete_method (single_path, base64auth, email, extension);
+                                if(check_connection == 0) {
+                                    deleted_files.push_back(single_path);
+                                }
+                            }
+                            catch (std::exception &e) {
+                                std::cout << "Exception: " << e.what() << "\n";
+                            }
+                        }
+                            break;
+                        default:
+                            std::cout << "Error! Unknown file status.\n";
                     }
-                        break;
-                    default:
-                        std::cout << "Error! Unknown file status.\n";
-                }
-            });
-        }
-        catch (std::exception &e) {
-            std::cout << "Exception: " << e.what() << "\n";
-        }
+                });
+            }
+            catch (std::exception &e) {
+                std::cout << "Exception: " << e.what() << "\n";
+            }
         }
 
     }
@@ -456,4 +469,3 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
