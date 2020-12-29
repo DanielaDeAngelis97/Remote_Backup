@@ -4,18 +4,22 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/asynclienthttp/crypto.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/asynclienthttp/cmake-build-debug/CMakeFiles/asynclienthttp.dir/crypto.cpp.obj"
-  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/asynclienthttp/main.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/asynclienthttp/cmake-build-debug/CMakeFiles/asynclienthttp.dir/main.cpp.obj"
-  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/asynclienthttp/mime_types.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/asynclienthttp/cmake-build-debug/CMakeFiles/asynclienthttp.dir/mime_types.cpp.obj"
+  "/home/daniela/Remote_Backup/asynclienthttp/crypto.cpp" "/home/daniela/Remote_Backup/asynclienthttp/cmake-build-debug/CMakeFiles/asynclienthttp.dir/crypto.cpp.o"
+  "/home/daniela/Remote_Backup/asynclienthttp/main.cpp" "/home/daniela/Remote_Backup/asynclienthttp/cmake-build-debug/CMakeFiles/asynclienthttp.dir/main.cpp.o"
+  "/home/daniela/Remote_Backup/asynclienthttp/mime_types.cpp" "/home/daniela/Remote_Backup/asynclienthttp/cmake-build-debug/CMakeFiles/asynclienthttp.dir/mime_types.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "BOOST_ALL_NO_LIB"
+  "BOOST_FILESYSTEM_DYN_LINK"
+  "BOOST_SYSTEM_DYN_LINK"
+  )
+
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "C:/MinGW/include"
-  "../OPENSSL_INCLUDE_DIR"
-  "C:/OpenSSL/DLL/x64"
-  "C:/Strawberry/c/include"
+  "/home/daniela/Scaricati/boost_1_74_0"
   )
 
 # Targets to which this target links.

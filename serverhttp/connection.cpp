@@ -81,7 +81,6 @@ namespace http {
                 // Initiate graceful connection closure.
                 boost::system::error_code ignored_ec;
                 socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_ec);
-                std::cout << socket_.is_open() << "morto";
             }
 
             // No new asynchronous operations are started. This means that all shared_ptr

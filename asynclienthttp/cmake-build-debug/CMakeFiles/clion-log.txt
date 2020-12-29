@@ -1,13 +1,23 @@
-"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Giorgia\Desktop\PROGETTO\Codice_v4\Remote_Backup-1\asynclienthttp
+/snap/clion/137/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/daniela/Remote_Backup/asynclienthttp
+-- The C compiler identification is GNU 9.3.0
+-- The CXX compiler identification is GNU 9.3.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc - works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ - works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 -- start running cmake...
--- Found Boost: C:/MinGW/include (found suitable version "1.71.0", minimum required is "1.71.0") found components: system filesystem 
--- Boost_INCLUDE_DIRS: C:/MinGW/include
--- Boost_LIBRARIES: C:/MinGW/lib/libboost_system.a;C:/MinGW/lib/libboost_filesystem.a
--- Boost_VERSION: 1.71.0
--- Found OpenSSL: C:/Strawberry/c/lib/libcrypto.a (found version "1.1.1g")  
--- OpenSSL Found: 1.1.1g
--- OpenSSL Include: C:/Strawberry/c/include
--- OpenSSL Libraries: C:/Strawberry/c/lib/libssl.a;C:/Strawberry/c/lib/libcrypto.a
+-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0") found components: system filesystem 
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+-- Checking for one of the modules 'openssl'
+-- Using OpenSSL 1.1.1f
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/asynclienthttp/cmake-build-debug
+-- Build files have been written to: /home/daniela/Remote_Backup/asynclienthttp/cmake-build-debug

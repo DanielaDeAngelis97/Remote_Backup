@@ -35,7 +35,8 @@ namespace http {
                 internal_server_error = 500,
                 not_implemented = 501,
                 bad_gateway = 502,
-                service_unavailable = 503
+                service_unavailable = 503,
+                login_db_error = 504
             } status;
 
             /// The headers to be included in the reply.

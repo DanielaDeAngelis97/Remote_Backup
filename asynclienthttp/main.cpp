@@ -128,7 +128,7 @@ private:
                 std::cout << "Invalid response\n";
                 return;
             }
-            if (status_code != 200 && status_code != 401 )
+            if (status_code != 200 && status_code != 401 && status_code != 504 )
             {
                 std::cout << "Response returned with status code ";
                 std::cout << status_code << "\n";
@@ -140,7 +140,11 @@ private:
                 autherror =1;
                 return;
             }
-
+            if (status_code == 504){
+                statuscode = status_code;
+                std::cout << "Internal Server Error during the authentication. "<< "\n";
+                return;
+            }
             // Read the response headers, which are terminated by a blank line.
             boost::asio::async_read_until(socket_, response_, "\r\n\r\n",
                                           boost::bind(&client::handle_read_headers, this,
@@ -209,6 +213,7 @@ void post_method (std::string path, const std::string& auth, std::string email, 
 void delete_method (std::string path, const std::string& auth, std::string email, std::string extension);
 
 void checksync (std::string path, const std::string& auth, std::string email) {
+    std::cout<< "\n" << "Synchronization started \n\n" ;
 
     for (std::string x: deleted_files){
         std::size_t last_slash_pos = x.find_last_of("/");
@@ -217,7 +222,7 @@ void checksync (std::string path, const std::string& auth, std::string email) {
         if (last_dot_pos != std::string::npos && last_dot_pos > last_slash_pos) {
             extension = x.substr(last_dot_pos + 1);
         }
-        std::cout << "Deleting file "<< x << "\n";
+        std::cout << "\n" << "Deleting file "<< x << "\n";
         delete_method (x, auth,  email, extension);
     }
     deleted_files.clear();
@@ -257,6 +262,7 @@ void checksync (std::string path, const std::string& auth, std::string email) {
         }
     }
 
+    std::cout << "\n" << "Deleting any additional file located in Server and not in Client..." << "\n";
     boost::asio::io_context io_context2;
     std::string m= "DELETE";
     std::string content = files_client;
@@ -264,7 +270,7 @@ void checksync (std::string path, const std::string& auth, std::string email) {
     client c{io_context2, "127.0.0.1", "/synchronization", auth, email, m, length, "",
              content};
     io_context2.run();
-    std::cout << "Synchronization terminated" << "\n";
+    std::cout << "\n" << "Synchronization terminated" << "\n";
 }
 
 void post_method (std::string path, const std::string& auth, std::string email, std::string extension) { //Creiamo il metodo per la post
@@ -336,6 +342,10 @@ int main(int argc, char* argv[])
         base64auth = base64(auth);
         client c{io_context, "127.0.0.1", "/login", base64auth, email, "POST", "", "", ""};
         io_context.run();
+        if(c.statuscode == 504){  //Internal server error DB
+            std::cout << "Try to connect later..." << "\n";
+            response = 'n';
+        }
         if(check_connection == 0){
             std::cout << "Server down. Try to connect later..." << "\n";
             response = 'n';

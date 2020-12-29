@@ -27,9 +27,14 @@ namespace http {
         void request_handler::handle_request(const request& req, reply& rep)
         {
             std::string emailpasswd = req.headers[2].value;
-            //std::string logindb = "/home/daniela/CLionProjects/serverhttp/Login/LoginDB.csv";
-            std::string logindb = "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/Login/LoginDB.csv";
+            std::string logindb = "/home/daniela/Remote_Backup/serverhttp/Login/LoginDB.csv";
+            //std::string logindb = "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/Login/LoginDB.csv";
             std::ifstream is(logindb.c_str(), std::ios::in | std::ios::binary);
+            if (!is)
+            {
+                rep = reply::stock_reply(reply::login_db_error);
+                return;
+            }
             std::string line;
             std::string email;
             std::string passwd;
@@ -150,7 +155,6 @@ namespace http {
                         if (std::find(std::begin(paths_client), std::end(paths_client), path_to_control_server) != std::end(paths_client)){
                             // myinput is included in mylist.
                         }else{
-                            std::cout<<"\nDENTRO ELSE\n";
                             paths_to_delete.push_back(file.path().string());
                         }
                     }
@@ -158,8 +162,8 @@ namespace http {
                         for (int i = 0; i < paths_to_delete.size(); i++) {
                             std::filesystem::remove_all(std::filesystem::path(paths_to_delete[i]));
                         }
-                        rep.status = reply::accepted;
                     }
+                    rep.status = reply::accepted;
                 } else {
                 std::string path = doc_root_ + "/" + email + "/" + request_path;
                 std::ifstream is(path.c_str(), std::ios::in | std::ios::binary);

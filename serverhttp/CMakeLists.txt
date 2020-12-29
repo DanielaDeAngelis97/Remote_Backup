@@ -7,6 +7,7 @@ message(STATUS "start running cmake...")
 
 
 # WINDOWS
+#[[
 find_package(Boost 1.71.0 COMPONENTS system filesystem REQUIRED)
 if(Boost_FOUND)
     message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
@@ -35,6 +36,7 @@ if(OpenSSL_FOUND)
 else()
     # Error; with REQUIRED, pkg_search_module() will throw an error by it's ow
 endif()
+]]
 
 
 
@@ -43,7 +45,7 @@ endif()
 
 
 # LINUX
-#[[set(Boost_INCLUDE_DIR /home/daniela/Scaricati/boost_1_74_0)
+set(Boost_INCLUDE_DIR /home/daniela/Scaricati/boost_1_74_0)
 set(Boost_LIBRARY_DIR /home/daniela/Scaricati/boost_1_74_0/stage/lib)
 find_package(Boost COMPONENTS system filesystem REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
@@ -60,4 +62,4 @@ if( OPENSSL_FOUND )
 else()
     # Error; with REQUIRED, pkg_search_module() will throw an error by it's ow
 endif()
-target_link_libraries(serverhttp ${OPENSSL_LIBRARIES} -lssl -lcrypto)]]
+target_link_libraries(serverhttp ${OPENSSL_LIBRARIES} -lssl -lcrypto)

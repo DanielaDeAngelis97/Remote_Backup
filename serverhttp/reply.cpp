@@ -44,6 +44,8 @@ namespace http {
                     "HTTP/1.0 502 Bad Gateway\r\n";
             const std::string service_unavailable =
                     "HTTP/1.0 503 Service Unavailable\r\n";
+            const std::string login_db_error =
+                    "HTTP/1.0 504 Login DB Error\r\n";
 
             boost::asio::const_buffer to_buffer(reply::status_type status)
             {
@@ -83,6 +85,8 @@ namespace http {
                         return boost::asio::buffer(bad_gateway);
                     case reply::service_unavailable:
                         return boost::asio::buffer(service_unavailable);
+                    case reply::login_db_error:
+                        return boost::asio::buffer(login_db_error);
                     default:
                         return boost::asio::buffer(internal_server_error);
                 }
@@ -197,6 +201,11 @@ namespace http {
                     "<head><title>Service Unavailable</title></head>"
                     "<body><h1>503 Service Unavailable</h1></body>"
                     "</html>";
+            const char login_db_error[] =
+                    "<html>"
+                    "<head><title>Login DB Error</title></head>"
+                    "<body><h1>504 Login DB Error</h1></body>"
+                    "</html>";
 
             std::string to_string(reply::status_type status)
             {
@@ -212,6 +221,8 @@ namespace http {
                         return no_content;
                     case reply::not_sync:
                         return not_sync;
+                    case reply::login_db_error:
+                        return login_db_error;
                     case reply::multiple_choices:
                         return multiple_choices;
                     case reply::moved_permanently:
