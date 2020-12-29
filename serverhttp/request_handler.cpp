@@ -27,7 +27,8 @@ namespace http {
         void request_handler::handle_request(const request& req, reply& rep)
         {
             std::string emailpasswd = req.headers[2].value;
-            std::string logindb = "/home/daniela/CLionProjects/serverhttp/Login/LoginDB.csv";
+            //std::string logindb = "/home/daniela/CLionProjects/serverhttp/Login/LoginDB.csv";
+            std::string logindb = "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/Login/LoginDB.csv";
             std::ifstream is(logindb.c_str(), std::ios::in | std::ios::binary);
             std::string line;
             std::string email;
@@ -135,19 +136,21 @@ namespace http {
                 }
             }
             else if(req.method=="DELETE") {
-                if (request_path == "/syncronization") {
+                if (request_path == "/synchronization") {
                     std::vector<std::string> paths_client;
-                    std::vector<std::string> path_to_control_server;
+                    std::string path_to_control_server;
                     std::vector<std::string> paths_to_delete;
                     boost::split(paths_client, req.content, boost::is_any_of(";"));
                     std::string path = doc_root_ + "/" + email + paths_client[0]; //rappresenta il path della cartella che abbiamo deciso di osservare lato client
+
                     for (auto &file : std::filesystem::recursive_directory_iterator(path)) { //qui prendo i path contenuti
                         /* Controllo se il singolo path del server è contenuto della lista del client */
-                        boost::split(path_to_control_server, file.path().string(), boost::is_any_of("prova"));
-                        std::cout << "PATH " << path_to_control_server[1];
-                        if (std::find(std::begin(paths_client), std::end(paths_client), path_to_control_server[1]) != std::end(paths_client)){
+                        size_t pos = file.path().string().find(email);
+                        path_to_control_server = file.path().string().substr(pos + email.size());
+                        if (std::find(std::begin(paths_client), std::end(paths_client), path_to_control_server) != std::end(paths_client)){
                             // myinput is included in mylist.
                         }else{
+                            std::cout<<"\nDENTRO ELSE\n";
                             paths_to_delete.push_back(file.path().string());
                         }
                     }

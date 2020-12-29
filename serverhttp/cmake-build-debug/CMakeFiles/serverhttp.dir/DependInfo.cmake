@@ -4,27 +4,23 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/daniela/CLionProjects/serverhttp/connection.cpp" "/home/daniela/CLionProjects/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/connection.cpp.o"
-  "/home/daniela/CLionProjects/serverhttp/crypto.cpp" "/home/daniela/CLionProjects/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/crypto.cpp.o"
-  "/home/daniela/CLionProjects/serverhttp/main.cpp" "/home/daniela/CLionProjects/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/main.cpp.o"
-  "/home/daniela/CLionProjects/serverhttp/mime_types.cpp" "/home/daniela/CLionProjects/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/mime_types.cpp.o"
-  "/home/daniela/CLionProjects/serverhttp/reply.cpp" "/home/daniela/CLionProjects/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/reply.cpp.o"
-  "/home/daniela/CLionProjects/serverhttp/request_handler.cpp" "/home/daniela/CLionProjects/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_handler.cpp.o"
-  "/home/daniela/CLionProjects/serverhttp/request_parser.cpp" "/home/daniela/CLionProjects/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_parser.cpp.o"
-  "/home/daniela/CLionProjects/serverhttp/server.cpp" "/home/daniela/CLionProjects/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/server.cpp.o"
+  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/connection.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/connection.cpp.obj"
+  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/crypto.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/crypto.cpp.obj"
+  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/main.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/main.cpp.obj"
+  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/mime_types.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/mime_types.cpp.obj"
+  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/reply.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/reply.cpp.obj"
+  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/request_handler.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_handler.cpp.obj"
+  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/request_parser.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_parser.cpp.obj"
+  "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/server.cpp" "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/server.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS_CXX
-  "BOOST_ALL_NO_LIB"
-  "BOOST_FILESYSTEM_DYN_LINK"
-  "BOOST_SYSTEM_DYN_LINK"
-  )
-
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/daniela/Scaricati/boost_1_74_0"
+  "C:/MinGW/include"
+  "../OPENSSL_INCLUDE_DIR"
+  "C:/OpenSSL/DLL/x64"
+  "C:/Strawberry/c/include"
   )
 
 # Targets to which this target links.
