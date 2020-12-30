@@ -25,7 +25,7 @@ namespace http {
         {
         public:
             /// Construct a connection with the given io_service.
-            explicit connection(boost::asio::io_service& io_service,
+            explicit connection(boost::asio::io_context& io_context,
                                 request_handler& handler);
 
             /// Get the socket associated with the connection.

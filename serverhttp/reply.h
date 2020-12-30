@@ -23,6 +23,7 @@ namespace http {
                 created = 201,
                 accepted = 202,
                 no_content = 204,
+                nothing_to_delete = 205,
                 multiple_choices = 300,
                 moved_permanently = 301,
                 moved_temporarily = 302,

@@ -18,6 +18,8 @@ namespace http {
                     "HTTP/1.0 202 Accepted\r\n";
             const std::string no_content =
                     "HTTP/1.0 204 No Content\r\n";
+            const std::string nothing_to_delete =
+                    "HTTP/1.0 205 Nothing to delete\r\n";
             const std::string multiple_choices =
                     "HTTP/1.0 300 Multiple Choices\r\n";
             const std::string moved_permanently =
@@ -59,6 +61,8 @@ namespace http {
                         return boost::asio::buffer(accepted);
                     case reply::no_content:
                         return boost::asio::buffer(no_content);
+                    case reply::nothing_to_delete:
+                        return boost::asio::buffer(nothing_to_delete);
                     case reply::multiple_choices:
                         return boost::asio::buffer(multiple_choices);
                     case reply::moved_permanently:
@@ -135,6 +139,11 @@ namespace http {
                     "<html>"
                     "<head><title>No Content</title></head>"
                     "<body><h1>204 Content</h1></body>"
+                    "</html>";
+            const char nothing_to_delete[] =
+                    "<html>"
+                    "<head><title>Nothing to delete</title></head>"
+                    "<body><h1>205 Nothing to delete</h1></body>"
                     "</html>";
             const char multiple_choices[] =
                     "<html>"
@@ -219,6 +228,8 @@ namespace http {
                         return accepted;
                     case reply::no_content:
                         return no_content;
+                    case reply::nothing_to_delete:
+                        return nothing_to_delete;
                     case reply::not_sync:
                         return not_sync;
                     case reply::login_db_error:

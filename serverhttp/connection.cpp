@@ -6,14 +6,17 @@
 #include <boost/bind/bind.hpp>
 #include "request_handler.h"
 #include <iostream>
+#include <boost/lexical_cast.hpp>
+#include <iomanip>
 
 namespace http {
     namespace server3 {
-
-        connection::connection(boost::asio::io_service& io_service,
+        float percentuale=0.00;
+        float byte_intermedi=0.00;
+        connection::connection(boost::asio::io_context& io_context,
                                request_handler& handler)
-                : strand_(io_service),
-                  socket_(io_service),
+                : strand_(io_context),
+                  socket_(io_context),
                   request_handler_(handler)
         {
         }
@@ -40,10 +43,16 @@ namespace http {
                 boost::tribool result;
                 boost::tie(result, boost::tuples::ignore) = request_parser_.parse(
                         request_, buffer_.data(), buffer_.data() + bytes_transferred);
-                std::cout << request_.uri << "\n";
+                if (request_.uri != "/login" && request_.uri != "/synchronization" && request_.uri != "/reconnect" && request_.method == "POST"){
+                    byte_intermedi = byte_intermedi + bytes_transferred;
+                percentuale = (byte_intermedi/(std::stol(request_.headers[5].value, nullptr, 10)))*100;
+                std::cout << request_.uri << ": " << std::fixed << std::setprecision(2) << percentuale << "%" <<"\n";
+                }
 
                 if (result)
                 {
+                    percentuale=0.00;
+                    byte_intermedi=0.00;
                     request_handler_.handle_request(request_, reply_);
                     boost::asio::async_write(socket_, reply_.to_buffers(),
                                              strand_.wrap(

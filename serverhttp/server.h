@@ -42,7 +42,7 @@ namespace http {
             std::size_t thread_pool_size_;
 
             /// The io_service used to perform asynchronous operations.
-            boost::asio::io_service io_service_;
+            boost::asio::io_context io_context_;
 
             /// Acceptor used to listen for incoming connections.
             boost::asio::ip::tcp::acceptor acceptor_;
