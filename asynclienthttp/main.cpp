@@ -94,6 +94,8 @@ private:
                                                       boost::asio::placeholders::error));
         } else {
             std::cout << "Error: " << err.message() << "\n";
+            if (err.message() == "Connection reset by peer")
+            check_connection = 0; //connection reset by peer, so try to reconnect
         }
     }
 
@@ -238,12 +240,7 @@ void checksync(std::string path, const std::string &auth, std::string email) {
         //Controllo il codice di errore:
         if (c.statuscode == 404 || c.statuscode == 305) {
             std::cout << "Updating server database..." << "\n";
-            std::cout << "Length "<< length << "\n";
-            /*if(length >= "1000000"){
-                std::future<void> post_async = std::async(std::launch::async, post_method,single_path, auth, email, extension);
-            }else {*/
-                post_method(single_path, auth, email, extension);
-            //}
+            post_method(single_path, auth, email, extension);
         }
     }
 
@@ -277,18 +274,26 @@ void delete_method(std::string path, const std::string &auth, std::string email,
 
 void reconnection(std::string path, const std::string &auth,
                   std::string email) { ///Creiamo il metodo per effettuare la riconnessione al server
+                  int i=0; ///flag che indica il tempo trascorso da quanto sto provando a fare la reconnection. Dopo 3 minuti stacca.
     boost::asio::io_context io_context1;
     boost::asio::deadline_timer timer(io_context1, boost::posix_time::seconds(30));
-    std::function<void(const boost::system::error_code &)> tick = [&timer, &tick, path, auth, email](
+    std::function<void(const boost::system::error_code &)> tick = [&timer, &tick,&i, path, auth, email](
             const boost::system::error_code &e) {
         if (check_connection == 0) {
             std::cout << "Try to reconnect..." << "\n";
+            i++;
             boost::asio::io_context io_context;
             client c{io_context, "127.0.0.1", "/reconnect", auth, email, "POST", "", "", ""};
             io_context.run();
         }
         if (check_connection ==1){//prima connessione che va a buon fine dopo l'errore
-                checksync(path, auth, email);
+            i=0; ///resettiamo il timer
+            checksync(path, auth, email);
+        }
+        if(i==6){
+            i=0;
+            std::cout << "Server unreachable. Try to reconnect later. " << "\n" << "Closing the application...";
+            exit(1);
         }
         timer.expires_at(timer.expires_at() + boost::posix_time::seconds(30));
         timer.async_wait(tick);

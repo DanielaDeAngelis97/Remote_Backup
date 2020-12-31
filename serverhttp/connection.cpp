@@ -11,8 +11,6 @@
 
 namespace http {
     namespace server3 {
-        float percentuale=0.00;
-        float byte_intermedi=0.00;
         connection::connection(boost::asio::io_context& io_context,
                                request_handler& handler)
                 : strand_(io_context),
@@ -44,15 +42,18 @@ namespace http {
                 boost::tie(result, boost::tuples::ignore) = request_parser_.parse(
                         request_, buffer_.data(), buffer_.data() + bytes_transferred);
                 if (request_.uri != "/login" && request_.uri != "/synchronization" && request_.uri != "/reconnect" && request_.method == "POST"){
-                    byte_intermedi = byte_intermedi + bytes_transferred;
-                percentuale = (byte_intermedi/(std::stol(request_.headers[5].value, nullptr, 10)))*100;
-                std::cout << request_.uri << ": " << std::fixed << std::setprecision(2) << percentuale << "%" <<"\n";
+                    request_.intermediate_bytes = request_.intermediate_bytes + bytes_transferred;
+                    request_.percentage= (request_.intermediate_bytes/(std::stol(request_.headers[5].value, nullptr, 10)))*100;
+                    if(request_.percentage >= 100){
+                        request_.percentage = 100;
+                    }
+                std::cout << request_.uri << ": " << std::fixed << std::setprecision(2) << request_.percentage << "%" <<"\n";
                 }
 
                 if (result)
                 {
-                    percentuale=0.00;
-                    byte_intermedi=0.00;
+                    request_.percentage=0.00;
+                    request_.intermediate_bytes=0.00;
                     request_handler_.handle_request(request_, reply_);
                     boost::asio::async_write(socket_, reply_.to_buffers(),
                                              strand_.wrap(

@@ -21,6 +21,8 @@ namespace http {
             std::vector<header> headers;
             /// The content to be sent in the request
             std::string content;
+            float percentage=0.00;
+            float intermediate_bytes=0.00;
         };
 
     } // namespace server3

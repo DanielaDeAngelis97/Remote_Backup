@@ -1,4 +1,4 @@
-/snap/clion/137/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/daniela/Remote_Backup/asynclienthttp
+/snap/clion/138/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/daniela/Remote_Backup/asynclienthttp
 -- The C compiler identification is GNU 9.3.0
 -- The CXX compiler identification is GNU 9.3.0
 -- Check for working C compiler: /usr/bin/cc
@@ -14,9 +14,6 @@
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
 -- start running cmake...
--- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0") found components: system filesystem 
--- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
--- Checking for one of the modules 'openssl'
 -- Using OpenSSL 1.1.1f
 -- Configuring done
 -- Generating done
