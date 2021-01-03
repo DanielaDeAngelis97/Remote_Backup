@@ -4,14 +4,15 @@
 
 #ifndef ASYNCLIENTHTTP_CRYPTO_H
 #define ASYNCLIENTHTTP_CRYPTO_H
+
 #include <string>
 #include <optional>
 #include <openssl/sha.h>
 #include <openssl/evp.h>
-static const int K_READ_BUF_SIZE{ 1024 * 16 };
-std::string CalcSha512(std::string input);
-char *base64(std::string input) ;
 
+std::string CalcSha512(const std::string &input);
+
+char *base64(const std::string &input);
 
 
 #endif

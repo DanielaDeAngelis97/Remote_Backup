@@ -47,7 +47,7 @@ namespace http {
                     if(request_.percentage >= 100){
                         request_.percentage = 100;
                     }
-                std::cout << request_.uri << ": " << std::fixed << std::setprecision(2) << request_.percentage << "%" <<"\n";
+                std::cout << request_.headers[1].value << ": " << request_.uri << " " << std::fixed << std::setprecision(2) << request_.percentage << "%" <<"\n";
                 }
 
                 if (result)

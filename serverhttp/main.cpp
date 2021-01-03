@@ -16,14 +16,17 @@ int main(int argc, char* argv[])
     try
     {
         // Check command line arguments.
-        if (argc != 5)
+        if (argc != 4)
         {
-            std::cerr << "Usage: http_server <address> <port> <threads> <doc_root>\n";
+            std::cerr << "Usage: http_server <address> <port> <doc_root>\n";
             std::cerr << "  For IPv4, try:\n";
-            std::cerr << "    receiver 0.0.0.0 80 1 .\n";
+            std::cerr << "    receiver 0.0.0.0 80 .\n";
             std::cerr << "  For IPv6, try:\n";
-            std::cerr << "    receiver 0::0 80 1 .\n";
+            std::cerr << "    receiver 0::0 80 .\n";
             return 1;
+        }
+        else {
+            std::cout << "Server ready" << std::endl;
         }
 
         // Block all signals for background thread.
@@ -34,8 +37,7 @@ int main(int argc, char* argv[])
 
         // Run server in background thread.
         std::size_t num_threads = std::thread::hardware_concurrency();
-              // boost::lexical_cast<std::size_t>(argv[3]);
-        http::server3::server s(argv[1], argv[2], argv[4], num_threads);
+        http::server3::server s(argv[1], argv[2], argv[3], num_threads);
         boost::thread t(boost::bind(&http::server3::server::run, &s));
 
         // Restore previous signals.
@@ -88,19 +90,19 @@ int main(int argc, char* argv[])
   try
   {
     // Check command line arguments.
-    if (argc != 5)
+    if (argc != 4)
     {
-      std::cerr << "Usage: http_server <address> <port> <threads> <doc_root>\n";
+      std::cerr << "Usage: http_server <address> <port> <doc_root>\n";
       std::cerr << "  For IPv4, try:\n";
-      std::cerr << "    http_server 0.0.0.0 80 1 .\n";
+      std::cerr << "    http_server 0.0.0.0 80 .\n";
       std::cerr << "  For IPv6, try:\n";
-      std::cerr << "    http_server 0::0 80 1 .\n";
+      std::cerr << "    http_server 0::0 80 .\n";
       return 1;
     }
 
     // Initialise server.
-    std::size_t num_threads = boost::lexical_cast<std::size_t>(argv[3]);
-    http::server3::server s(argv[1], argv[2], argv[4], num_threads);
+    std::size_t num_threads = std::thread::hardware_concurrency();
+    http::server3::server s(argv[1], argv[2], argv[3], num_threads);
 
     // Set console control handler to allow server to be stopped.
     console_ctrl_function = boost::bind(&http::server3::server::stop, &s);

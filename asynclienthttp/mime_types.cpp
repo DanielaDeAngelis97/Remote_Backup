@@ -4,52 +4,45 @@
 
 #include "mime_types.h"
 
- namespace mime_types {
+namespace mime_types {
 
-            struct mapping
+    struct mapping {
+        const char *extension;
+        const char *mime_type;
+    } mappings[] =
             {
-                const char* extension;
-                const char* mime_type;
-            } mappings[] =
-                    {
-                            { "gif", "image/gif" },
-                            { "pdf", "application/pdf" },
-                            { "html", "text/html" },
-                            { "jpg", "image/jpeg" },
-                            { "csv", "text/csv" },
-                            { "mp4", "video/mp4" },
-                            { "txt", "text/plain" },
-                            { "png", "image/png" },
-                            { "doc", "application/msword" },
-                            { "docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" },
-                            { 0, 0 } // Marks end of list.
-                    };
+                    {"gif",  "image/gif"},
+                    {"pdf",  "application/pdf"},
+                    {"html", "text/html"},
+                    {"jpg",  "image/jpeg"},
+                    {"csv",  "text/csv"},
+                    {"mp4",  "video/mp4"},
+                    {"txt",  "text/plain"},
+                    {"png",  "image/png"},
+                    {"doc",  "application/msword"},
+                    {"docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
+                    {nullptr,      nullptr} // Marks end of list.
+            };
 
-            std::string extension_to_type(const std::string& extension)
-            {
-                for (mapping* m = mappings; m->extension; ++m)
-                {
-                    if (m->extension == extension)
-                    {
-                        return m->mime_type;
-                    }
-                }
-
-                return "text/plain";
+    std::string extension_to_type(const std::string &extension) {
+        for (mapping *m = mappings; m->extension; ++m) {
+            if (m->extension == extension) {
+                return m->mime_type;
             }
+        }
 
-            std::string type_to_extension(const std::string& mime_type)
-            {
-                for (mapping* m = mappings; m->mime_type; ++m)
-                {
-                    if (m->mime_type == mime_type)
-                    {
-                        return m->extension;
-                    }
-                }
+        return "text/plain";
+    }
 
-                return "txt";
+  /*  std::string type_to_extension(const std::string &mime_type) {
+        for (mapping *m = mappings; m->mime_type; ++m) {
+            if (m->mime_type == mime_type) {
+                return m->extension;
             }
+        }
+
+        return "txt";
+    }*/
 
 
 } // namespace mime_types

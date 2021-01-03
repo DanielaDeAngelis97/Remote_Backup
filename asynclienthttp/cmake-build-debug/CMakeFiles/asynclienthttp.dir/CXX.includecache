@@ -22,6 +22,18 @@ functional
 iostream
 -
 
+/home/daniela/Remote_Backup/asynclienthttp/crypto.cpp
+crypto.h
+/home/daniela/Remote_Backup/asynclienthttp/crypto.h
+optional
+-
+iomanip
+-
+openssl/sha.h
+-
+iostream
+-
+
 /home/daniela/Remote_Backup/asynclienthttp/crypto.h
 string
 -
@@ -56,6 +68,8 @@ crypto.h
 list
 -
 csignal
+-
+cstdlib
 -
 
 /home/daniela/Remote_Backup/asynclienthttp/mime_types.h
