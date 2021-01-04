@@ -22,8 +22,8 @@ namespace http::server3 {
 
     void request_handler::handle_request(const request &req, reply &rep) {
         std::string emailpasswd = req.headers[2].value;
-        std::string logindb = "/home/daniela/Remote_Backup/serverhttp/Login/LoginDB.csv";
-        //std::string logindb = "C:/Users/Giorgia/Desktop/PROGETTO/Codice_v4/Remote_Backup-1/serverhttp/Login/LoginDB.csv";
+        // std::string logindb = "/home/daniela/Remote_Backup/serverhttp/Login/LoginDB.csv";
+        std::string logindb = "../Login/LoginDB.csv";
         std::ifstream is(logindb.c_str(), std::ios::in | std::ios::binary);
         if (!is) {
             rep = reply::stock_reply(reply::login_db_error);
