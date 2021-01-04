@@ -22,5 +22,5 @@ side.
 This project can be executed both on Posix and Microsoft hosts. However, you have to change some configurations parameters:
 - In *CMakeList.txt*, both in Client and in Server, you have to uncomment the part relative to your operating system and comment the other one;
 - You must insert the path to watch when it is required by console, using the character "/" as separator. *Example: /Users/u1/Desktop/Folder1*;
-- Server side you must insert program arguments from "*Run -> Edit Configurations... -> Program argument*" or after the executable if you run the application by terminal. The arguments are: server address, port and database folder. *Example: "127.0.0.1 1234 /Users/u1/Desktop/DB"*.
+- Server side you must insert program arguments from "*Run -> Edit Configurations... -> Program argument*" or after the executable if you run the application by terminal. The arguments are: server address, port and database folder (the folder you choose to save the backup). *Example: "127.0.0.1 1234 /Users/u1/Desktop/DB"*.
 
