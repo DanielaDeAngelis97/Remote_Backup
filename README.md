@@ -19,4 +19,7 @@ Per each existing connection, incoming messages will be evaluated in the order t
 side.
 
 ## General Informations
-This project can be executed both on Posix and Microsoft hosts. However you should change some configurations parameters in *CMakeList.txt*.In particular, you have to comment or decomment the relative part, and you must insert the path to watch, when it is required, with "/" instead of "\".
+This project can be executed both on Posix and Microsoft hosts. However, you have to change some configurations parameters:
+- In *CMakeList.txt*, both in Client and in Server, you have to uncomment the part relative to your operating system and comment the other one;
+- You must insert the path to watch when it is required by console, using the character "/" as separator. *Example: /Users/u1/Desktop/Folder1*;
+- Server side you must insert program arguments from "*Run -> Edit Configurations... -> Program argument*" or after the executable if you run the application by terminal. The arguments are: server address, port and database folder. *Example: "127.0.0.1 1234 /Users/u1/Desktop/DB"*.
