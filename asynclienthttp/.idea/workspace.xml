@@ -5,32 +5,67 @@
       <config projectName="asynclienthttp" targetName="asynclienthttp" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" ENABLED="true" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="258f8d72-ee1e-4ba5-8bb3-ee02d3d02a22" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/asynclienthttp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/asynclienthttp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/client.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileWatcher.h" beforeDir="false" afterPath="$PROJECT_DIR$/FileWatcher.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/asynclienthttp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/asynclienthttp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crypto.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/crypto.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crypto.h" beforeDir="false" afterPath="$PROJECT_DIR$/crypto.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/asynclienthttp.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/asynclienthttp.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mime_types.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/mime_types.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mime_types.h" beforeDir="false" afterPath="$PROJECT_DIR$/mime_types.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../serverhttp/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../serverhttp/.idea/serverhttp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/.idea/serverhttp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/connection.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/connection.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/crypto.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/crypto.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/mime_types.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/mime_types.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/reply.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/reply.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_handler.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_handler.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_parser.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_parser.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/server.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/server.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/serverhttp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/serverhttp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/connection.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/connection.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/connection.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/connection.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/crypto.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/crypto.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/crypto.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/crypto.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/header.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/header.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/mime_types.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/mime_types.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/mime_types.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/mime_types.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/reply.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/reply.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/reply.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/reply.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/request.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/request.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/request_handler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/request_handler.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/request_handler.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/request_handler.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/request_parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/request_parser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/request_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/request_parser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/server.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/server.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/server.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,9 +96,9 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="asynclienthttp" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="asynclienthttp" TARGET_NAME="asynclienthttp" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="asynclienthttp" RUN_TARGET_NAME="asynclienthttp">
@@ -90,6 +125,7 @@
       <workItem from="1609340111430" duration="15282000" />
       <workItem from="1609411598435" duration="5618000" />
       <workItem from="1609663900126" duration="15834000" />
+      <workItem from="1609770448381" duration="5500000" />
     </task>
     <servers />
   </component>

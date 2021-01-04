@@ -8,16 +8,12 @@
 
 #include <string>
 
-namespace http {
-    namespace server3 {
-        namespace mime_types {
+namespace http::server3::mime_types {
 
 /// Convert a file extension into a MIME type.
-            std::string extension_to_type(const std::string& extension);
-            std::string type_to_extension(const std::string& mime_type);
+    //std::string extension_to_type(const std::string& extension);
+    //std::string type_to_extension(const std::string& mime_type);
 
-        } // namespace mime_types
-    } // namespace server3
 } // namespace http
 
 #endif //SERVERHTTP_MIME_TYPES_H

@@ -93,6 +93,12 @@
 		<Unit filename="/home/daniela/Remote_Backup/asynclienthttp/FileWatcher.h">
 			<Option target="asynclienthttp"/>
 		</Unit>
+		<Unit filename="/home/daniela/Remote_Backup/asynclienthttp/client.cpp">
+			<Option target="asynclienthttp"/>
+		</Unit>
+		<Unit filename="/home/daniela/Remote_Backup/asynclienthttp/client.h">
+			<Option target="asynclienthttp"/>
+		</Unit>
 		<Unit filename="/home/daniela/Remote_Backup/asynclienthttp/crypto.cpp">
 			<Option target="asynclienthttp"/>
 		</Unit>

@@ -3,29 +3,23 @@
 #include <boost/asio.hpp>
 #include <boost/thread.hpp>
 #include <boost/bind/bind.hpp>
-#include <boost/lexical_cast.hpp>
 #include "server.h"
+#include <csignal>
+
 
 #if !defined(_WIN32)
 
-#include <pthread.h>
-#include <signal.h>
-
-int main(int argc, char* argv[])
-{
-    try
-    {
+int main(int argc, char *argv[]) {
+    try {
         // Check command line arguments.
-        if (argc != 4)
-        {
+        if (argc != 4) {
             std::cerr << "Usage: http_server <address> <port> <doc_root>\n";
             std::cerr << "  For IPv4, try:\n";
             std::cerr << "    receiver 0.0.0.0 80 .\n";
             std::cerr << "  For IPv6, try:\n";
             std::cerr << "    receiver 0::0 80 .\n";
             return 1;
-        }
-        else {
+        } else {
             std::cout << "Server ready" << std::endl;
         }
 
@@ -41,7 +35,7 @@ int main(int argc, char* argv[])
         boost::thread t(boost::bind(&http::server3::server::run, &s));
 
         // Restore previous signals.
-        pthread_sigmask(SIG_SETMASK, &old_mask, 0);
+        pthread_sigmask(SIG_SETMASK, &old_mask, nullptr);
 
         // Wait for signal indicating time to shut down.
         sigset_t wait_mask;
@@ -49,7 +43,7 @@ int main(int argc, char* argv[])
         sigaddset(&wait_mask, SIGINT);
         sigaddset(&wait_mask, SIGQUIT);
         sigaddset(&wait_mask, SIGTERM);
-        pthread_sigmask(SIG_BLOCK, &wait_mask, 0);
+        pthread_sigmask(SIG_BLOCK, &wait_mask, nullptr);
         int sig = 0;
         sigwait(&wait_mask, &sig);
 
@@ -57,9 +51,9 @@ int main(int argc, char* argv[])
         s.stop();
         t.join();
     }
-    catch (std::exception& e)
-    {
+    catch (std::exception &e) {
         std::cerr << "exception: " << e.what() << "\n";
+        exit(EXIT_FAILURE);
     }
 
     return 0;
