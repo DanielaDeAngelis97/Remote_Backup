@@ -4619,6 +4619,7 @@ CMakeFiles/serverhttp.dir/reply.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boos
 
 CMakeFiles/serverhttp.dir/request_handler.cpp.o: ../crypto.h
 CMakeFiles/serverhttp.dir/request_handler.cpp.o: ../header.h
+CMakeFiles/serverhttp.dir/request_handler.cpp.o: ../mime_types.h
 CMakeFiles/serverhttp.dir/request_handler.cpp.o: ../reply.h
 CMakeFiles/serverhttp.dir/request_handler.cpp.o: ../request.h
 CMakeFiles/serverhttp.dir/request_handler.cpp.o: ../request_handler.cpp

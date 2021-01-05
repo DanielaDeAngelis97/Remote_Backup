@@ -11,7 +11,7 @@
 namespace http::server3::mime_types {
 
 /// Convert a file extension into a MIME type.
-    //std::string extension_to_type(const std::string& extension);
+    std::string extension_to_type(const std::string& extension);
     //std::string type_to_extension(const std::string& mime_type);
 
 } // namespace http

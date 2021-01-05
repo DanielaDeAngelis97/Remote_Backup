@@ -10,13 +10,14 @@
 #include <string>
 #include <boost/asio.hpp>
 #include <boost/bind/bind.hpp>
-#include "FileWatcher.h"
 #include <boost/filesystem.hpp>
 #include <boost/lexical_cast.hpp>
 #include "mime_types.h"
 #include "crypto.h"
+#include <filesystem>
 #include <list>
 #include <csignal>
+#include <boost/algorithm/string.hpp>
 #include <cstdlib>
 
 using namespace boost::filesystem;
@@ -27,7 +28,7 @@ class client {
 public:
     int autherror;
     unsigned int statuscode;
-
+    std::string response_content;
     ///Costruttore classe Client
     client(boost::asio::io_context &io_context,
            const std::string &server, const std::string &path, const std::string &emailpasswd, const std::string &email,
@@ -65,5 +66,9 @@ void delete_method(const std::string &path, const std::string &auth, const std::
 
 /// Funzione utilizzata per effettuare la riconnessione al server ogni 30 secondi.
 void reconnection(const std::string &path, const std::string &auth, const std::string &email);
+
+/// Funzione che permette di ripristinare localmente sul Client, i file persi a causa di errori improvvisi.
+void restore_client(const std::string &path, const std::string &auth, const std::string &email, const std::string &files_server);
+
 
 #endif //ASYNCLIENTHTTP_CLIENT_H

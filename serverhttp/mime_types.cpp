@@ -23,7 +23,7 @@ namespace http::server3::mime_types {
                     {nullptr, nullptr} // Marks end of list.
             };
 
-    /*std::string extension_to_type(const std::string& extension)
+    std::string extension_to_type(const std::string& extension)
     {
         for (mapping* m = mappings; m->extension; ++m)
         {
@@ -34,7 +34,7 @@ namespace http::server3::mime_types {
         }
 
         return "text/plain";
-    }*/
+    }
 
     /* std::string type_to_extension(const std::string& mime_type)
      {

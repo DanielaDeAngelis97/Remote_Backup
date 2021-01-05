@@ -31,6 +31,7 @@ int main() {
     std::string email;
     std::string passwd;
     std::string auth;
+    std::string paths_server;
     char *base64auth;
     int tentativi = 0;
     while (response == "y" && exit_from_while == 0) {   ///Controlliamo che le credenziali inserite siano corrette
@@ -52,6 +53,7 @@ int main() {
         base64auth = base64(auth);
         client c{io_context, "127.0.0.1", "/login", base64auth, email, "POST", "", "", ""};
         io_context.run();
+        paths_server = c.response_content;
 
         if (c.statuscode == 504) {  ///Internal server error DB
             std::cout << "Try to connect later..." << "\n";
@@ -83,17 +85,27 @@ int main() {
     if (response == "y") {
         std::cout << "Insert path to watch: " << "\n";
         std::getline(std::cin >> std::ws, path);
+        int restore=0;
+        std::future<void> f;
         while (!std::filesystem::is_directory(std::filesystem::path(path))) {
             std::cout << "This path doesn't exist. Retry." << "\n";
             std::cout << "Insert path to watch: " << "\n";
             std::getline(std::cin >> std::ws, path);
         }
 
+        if ( (std::filesystem::is_empty(std::filesystem::path(path))) &&  (paths_server.length()!=0) ){
+            restore_client (path, base64auth, email, paths_server);
+            restore=1;
+        }
         /// Create a FileWatcher instance that will check the current folder for changes every 5 seconds
         FileWatcher fw{path};
 
-        /// In modo asincrono richiamiamo la funzione checksync
-        std::future<void> f = std::async(std::launch::async, checksync, path, base64auth, email);
+        /// Se il client ha perso tutti i dati chiamo la funzione -> restore_client
+        /// altrimenti -> checksync
+        if ( restore==0 ) {
+            /// In modo asincrono richiamiamo la funzione checksync
+           f = std::async(std::launch::async, checksync, path, base64auth, email);
+        }
 
         bool running_ = true;
         std::chrono::duration<int, std::milli> delay = std::chrono::milliseconds(1000);

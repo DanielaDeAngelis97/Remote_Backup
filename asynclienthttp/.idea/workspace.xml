@@ -12,19 +12,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="258f8d72-ee1e-4ba5-8bb3-ee02d3d02a22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/ivania/prova1/Cartella2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/client.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.h" beforeDir="false" afterPath="$PROJECT_DIR$/client.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/client.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/client.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/asynclienthttp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/asynclienthttp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/mime_types.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/mime_types.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/reply.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/reply.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_handler.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_handler.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/serverhttp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/serverhttp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../serverhttp/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/mime_types.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/mime_types.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/mime_types.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/mime_types.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/reply.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/reply.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../serverhttp/request_handler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/request_handler.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +71,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -77,6 +93,7 @@
       <workItem from="1609770448381" duration="5500000" />
       <workItem from="1609843819556" duration="98000" />
       <workItem from="1609844219299" duration="7087000" />
+      <workItem from="1609856114073" duration="21138000" />
     </task>
     <servers />
   </component>

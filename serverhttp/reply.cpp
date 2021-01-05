@@ -106,13 +106,13 @@ namespace http::server3 {
         std::vector<boost::asio::const_buffer> buffers;
         buffers.push_back(status_strings::to_buffer(status));
         for (auto &h : headers) {
-            buffers.emplace_back(boost::asio::buffer(h.name));
+            buffers.push_back(boost::asio::buffer(h.name));
             buffers.push_back(boost::asio::buffer(misc_strings::name_value_separator));
-            buffers.emplace_back(boost::asio::buffer(h.value));
+            buffers.push_back(boost::asio::buffer(h.value));
             buffers.push_back(boost::asio::buffer(misc_strings::crlf));
         }
         buffers.push_back(boost::asio::buffer(misc_strings::crlf));
-        buffers.emplace_back(boost::asio::buffer(content));
+        buffers.push_back(boost::asio::buffer(content));
         return buffers;
     }
 

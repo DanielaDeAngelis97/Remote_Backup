@@ -12,7 +12,8 @@ client::client(boost::asio::io_context &io_context,
         : resolver_(io_context),
           socket_(io_context),
           statuscode(0),
-          autherror(0) {
+          autherror(0),
+          response_content(""){
 
     /// Form the request. We specify the "Connection: close" header so that the
     /// server will close the socket after transmitting the response.
@@ -132,13 +133,17 @@ void client::handle_read_headers(const boost::system::error_code &err) {
         /// Process the response headers.
         std::istream response_stream(&response_);
         std::string header;
-        while (std::getline(response_stream, header) && header != "\r")
-            std::cout << header << "\n";
-        std::cout << "\n";
+        while (std::getline(response_stream, header) && header != "\r"){}
+           //std::cout << header << "\n";
+        //std::cout << "\n";
 
+        std::string a;
         /// Write whatever content we already have to output.
-        if (response_.size() > 0)
-            std::cout << &response_;
+        if (response_.size() > 0) {
+            std::istream response_stream(&response_);
+           response_stream >> a;
+           response_content+=a;
+        }
 
         /// Start reading remaining data until EOF.
         boost::asio::async_read(socket_, response_,
@@ -151,9 +156,12 @@ void client::handle_read_headers(const boost::system::error_code &err) {
 }
 
 void client::handle_read_content(const boost::system::error_code &err) {
+    std::string a;
     if (!err) {
         /// Write all of the data that has been read so far.
-        std::cout << &response_;
+        std::istream response_stream(&response_);
+        response_stream >> a;
+        response_content+=a;
 
         /// Continue reading remaining data until EOF.
         boost::asio::async_read(socket_, response_,
@@ -164,6 +172,7 @@ void client::handle_read_content(const boost::system::error_code &err) {
         std::cout << "Error: " << err << "\n";
     }
 }
+
 
 void checksync(const std::string &path, const std::string &auth, const std::string &email) {
     std::cout << "\n" << "Synchronization started \n\n";
@@ -280,3 +289,47 @@ void reconnection(const std::string &path, const std::string &auth, const std::s
     timer.async_wait(tick);
     io_context1.run();
 }
+
+
+void restore_client(const std::string &path, const std::string &auth, const std::string &email, const std::string &files_server) {
+    std::cout << "\n" << "Recovery of the Client started\n\n";
+
+    std::cout << files_server << std::endl;
+    std::vector<std::string> fs;
+    boost::split(fs, files_server, boost::is_any_of(";"));
+    for (int i=0; i<fs.size(); i++) {
+        size_t pos = fs[i].find(path);
+        if (pos != std::string::npos) {
+            size_t pos2 = fs[i].find(email);
+            std::string path_for_client = fs[i].substr(pos2 + email.size());
+            boost::asio::io_context io_context;
+            client c{io_context, "127.0.0.1", path_for_client, auth, email, "GET", "", "", ""};
+            io_context.run();
+
+            /// Determine the file extension.
+            std::size_t last_slash_pos = path_for_client.find_last_of('/');
+            std::size_t last_dot_pos = path_for_client.find_last_of('.');
+            std::string extension;
+            if (last_dot_pos != std::string::npos && last_dot_pos > last_slash_pos) {
+                extension = path_for_client.substr(last_dot_pos + 1);
+            }
+            if(extension.empty()){
+                std::filesystem::create_directories(path_for_client);
+                std::cout << path_for_client << " restored" << std::endl;
+            }else {
+                //CREO FILE
+                std::ofstream wf(path_for_client, std::ios::out | std::ofstream::binary);
+                wf.write(c.response_content.c_str(), c.response_content.length());
+                wf.close();
+                if (!wf.good()) {
+                    std::cout << "Error occurred at writing time!" << std::endl;
+                } else {
+                    std::cout << path_for_client << " restored" << std::endl;
+                }
+            }
+        }
+    }
+    std::cout << "\n" << "Recovery of client terminated" << "\n";
+}
+
+
