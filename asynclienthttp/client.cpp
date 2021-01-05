@@ -3,7 +3,7 @@
 //
 
 #include "client.h"
-
+int check_connection=1;
 client::client(boost::asio::io_context &io_context,
                const std::string &server, const std::string &path, const std::string &emailpasswd,
                const std::string &email,
@@ -82,7 +82,7 @@ void client::handle_write_request(const boost::system::error_code &err) {
                                                   boost::asio::placeholders::error));
     } else {
         std::cout << "Error: " << err.message() << "\n";
-        if (err.message() == "Connection reset by peer")
+        if (err.message() == "Connection reset by peer" || err.message() == "system:104")
             check_connection = 0; /// Connection reset by peer, quindi si ritenta la connessione.
     }
 }

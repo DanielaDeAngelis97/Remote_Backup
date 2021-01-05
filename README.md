@@ -10,8 +10,8 @@ In order to remain synced, both the client and the server have an image of the m
 In addition to the HTTP protocol, there is a function, called "*checksync*", that allows the client to verify whether or not the server already has a copy of a given file or folder. Since the filename and size are not enough to proof that the server has the same copy as the client, a (robust) hash has been computed per each file and sent to the server. Since the server may need some time to compute the answer, the protocol operates in asynchronous mode, without requiring an immediate response of the server before issuing a new request to it.
 
 ### Client Side
-The client side is in charge of continuously monitoring a specific folder that can be specified by the user and check that all the contents are in sync with the sever side. To perform this operation, we create a file system watcher found here (https://solarianprogrammer.com/2019/01/13/cpp-17-filesystem-write-file-watcher-
-monitor/). Whenever a discrepancy is found, the (updated) file  will be transfered to the server. 
+The client side is in charge of continuously monitoring a specific folder that can be specified by the user and check that all the contents are in sync with the sever side. To perform this operation, we create a file system watcher found here (https://solarianprogrammer.com/2019/01/13/cpp-17-filesystem-write-file-watcher-monitor/). 
+Whenever a discrepancy is found, the (updated) file  will be transfered to the server. 
 
 ### Server Side
 The server side is responsible of listening on socket connection and accept connection requests from clients. The server is designed in order to manage more than one client and have separate backup folders for each of them. When the communication channel is setup, a check of the client identity will be performed (by exchanging email and password in encrypted form) in order to associate the connection to the proper configuration parameters. 
@@ -23,4 +23,8 @@ This project can be executed both on Posix and Microsoft hosts using CLion devel
 - In *CMakeList.txt*, both in Client and in Server, you have to uncomment the part relative to your operating system and comment the other one;
 - You must insert the path to watch when it is required by console, using the character "/" as separator. *Example: /Users/u1/Desktop/Folder1*;
 - Server side you must insert program arguments from "*Run -> Edit Configurations... -> Program argument*" or after the executable if you run the application by terminal. The arguments are: server address, port and database folder (the folder you choose to save the backup). *Example: "127.0.0.1 1234 /Users/u1/Desktop/DB"*.
+
+Useful links for installing libraries on Windows: 
+- Openssl : https://www.youtube.com/watch?v=PMHEoBkxYaQ&t=15s
+- Boost : https://www.youtube.com/watch?v=lOt3Nei4vLk
 

@@ -92,7 +92,9 @@ int main(int argc, char* argv[])
       std::cerr << "  For IPv6, try:\n";
       std::cerr << "    http_server 0::0 80 .\n";
       return 1;
-    }
+    } else {
+            std::cout << "Server ready" << std::endl;
+        }
 
     // Initialise server.
     std::size_t num_threads = std::thread::hardware_concurrency();
@@ -108,6 +110,7 @@ int main(int argc, char* argv[])
   catch (std::exception& e)
   {
     std::cerr << "exception: " << e.what() << "\n";
+     exit(EXIT_FAILURE);
   }
 
   return 0;

@@ -21,8 +21,7 @@
 
 using namespace boost::filesystem;
 using boost::asio::ip::tcp;
-
-static int check_connection = 1;
+extern int check_connection;
 
 class client {
 public:
@@ -59,12 +58,10 @@ private:
 void checksync(const std::string &path, const std::string &auth, const std::string &email);
 
 /// Metodo POST HTTP, usato per creare o modificare i file sul Server
-void
-post_method(const std::string &path, const std::string &auth, const std::string &email, const std::string &extension);
+void post_method(const std::string &path, const std::string &auth, const std::string &email, const std::string &extension);
 
 /// Metodo DELETE HTTP, usato per eliminare i file sul Server
-void
-delete_method(const std::string &path, const std::string &auth, const std::string &email, const std::string &extension);
+void delete_method(const std::string &path, const std::string &auth, const std::string &email, const std::string &extension);
 
 /// Funzione utilizzata per effettuare la riconnessione al server ogni 30 secondi.
 void reconnection(const std::string &path, const std::string &auth, const std::string &email);
