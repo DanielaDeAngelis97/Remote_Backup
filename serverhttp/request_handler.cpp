@@ -85,6 +85,7 @@ namespace http::server3 {
                 rep.content.append(buf, is_get.gcount());
             if (req.content.empty()){
                 /// Voglio ripristinare i file lato Client
+                rep.content.append("EOF%\n");
                 rep.status = reply::ok;
                 rep.headers.resize(2);
                 rep.headers[0].name = "Content-Length";
@@ -129,7 +130,7 @@ namespace http::server3 {
                     const std::string full_path = doc_root_ + "/" + email;
                     std::string path_server;
                     for (auto &file : std::filesystem::recursive_directory_iterator(full_path)) {
-                        path_server+= file.path().string()+";";
+                        path_server+= file.path().string()+"EOF%\n";
                         }
                      rep.content.append(path_server);
                     rep.status = reply::ok;

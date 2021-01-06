@@ -19,6 +19,8 @@
 #include <csignal>
 #include <boost/algorithm/string.hpp>
 #include <cstdlib>
+#include <boost/logic/tribool.hpp>
+#include <boost/tuple/tuple.hpp>
 
 using namespace boost::filesystem;
 using boost::asio::ip::tcp;
@@ -52,7 +54,6 @@ private:
     tcp::socket socket_;
     boost::asio::streambuf request_;
     boost::asio::streambuf response_;
-
 };
 
 ///Funzione che permette di sincronizzare il client e il server

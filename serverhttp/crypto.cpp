@@ -42,3 +42,12 @@ unsigned char *decode64(const std::string &input) {
     return output;
 }
 
+char *base64(const std::string &input) {
+    const auto pl = 4 * ((input.length() + 2) / 3);
+    auto output = reinterpret_cast<char *>(calloc(pl + 1,
+                                                  1)); //+1 for the terminating null that EVP_EncodeBlock adds on
+    const auto ol = EVP_EncodeBlock(reinterpret_cast<unsigned char *>(output), (unsigned char *) input.c_str(),
+                                    input.length());
+    if (pl != ol) { std::cerr << "Whoops, encode predicted " << pl << " but we got " << ol << "\n"; }
+    return output;
+}

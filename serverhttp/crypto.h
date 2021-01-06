@@ -11,7 +11,7 @@
 #include <openssl/evp.h>
 
 std::string CalcSha512(const std::string& input);
-
+char *base64(const std::string &input);
 unsigned char *decode64(const std::string& input);
 
 

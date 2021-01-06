@@ -45,7 +45,11 @@ namespace http::server3 {
                 std::cout << request_.headers[1].value << ": " << request_.uri << " " << std::fixed
                           << std::setprecision(2) << request_.percentage << "%" << std::endl;
             }else{
-                std::cout << request_.headers[1].value << ": " << request_.uri << std::endl;
+                if(request_.method == "GET" && (request_.headers[5].value== "") && (request_.headers[6].value == "")){
+                    std::cout << request_.headers[1].value << ": " << "Recovering " << request_.uri << std::endl;
+                }else {
+                    std::cout << request_.headers[1].value << ": " << request_.uri << std::endl;
+                }
             }
 
             if (result) {

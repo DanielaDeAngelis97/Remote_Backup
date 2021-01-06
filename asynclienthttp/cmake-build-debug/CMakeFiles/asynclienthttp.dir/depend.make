@@ -814,6 +814,8 @@ CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/lexical_cast/detail/widest_char.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/lexical_cast/try_lexical_convert.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/limits.hpp
+CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/logic/tribool.hpp
+CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/logic/tribool_fwd.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/make_shared.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/math/policies/policy.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/math/special_functions/detail/fp_traits.hpp
@@ -1482,6 +1484,8 @@ CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/system/error_code.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/system/system_error.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/throw_exception.hpp
+CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/tuple/detail/tuple_basic.hpp
+CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/tuple/tuple.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_index.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_index/ctti_type_index.hpp
@@ -1491,6 +1495,7 @@ CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_index/stl_type_index.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_index/type_index_facade.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/add_const.hpp
+CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/add_cv.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/add_lvalue_reference.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/add_pointer.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/add_reference.hpp
@@ -1503,6 +1508,7 @@ CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/conditional.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/conversion_traits.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/copy_cv.hpp
+CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/cv_traits.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/decay.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/declval.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/detail/common_arithmetic_type.hpp
@@ -1586,6 +1592,7 @@ CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/remove_extent.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/remove_pointer.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/remove_reference.hpp
+CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/remove_volatile.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/type_identity.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/type_with_alignment.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/utility.hpp
@@ -1597,6 +1604,7 @@ CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/utility/enable_if.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/utility/identity_type.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/utility/result_of.hpp
+CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/utility/swap.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/version.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/visit_each.hpp
 CMakeFiles/asynclienthttp.dir/client.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/weak_ptr.hpp
@@ -2429,6 +2437,8 @@ CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/b
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/lexical_cast/detail/widest_char.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/lexical_cast/try_lexical_convert.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/limits.hpp
+CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/logic/tribool.hpp
+CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/logic/tribool_fwd.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/make_shared.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/math/policies/policy.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/math/special_functions/detail/fp_traits.hpp
@@ -3097,6 +3107,8 @@ CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/b
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/system/error_code.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/system/system_error.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/throw_exception.hpp
+CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/tuple/detail/tuple_basic.hpp
+CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/tuple/tuple.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_index.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_index/ctti_type_index.hpp
@@ -3106,6 +3118,7 @@ CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/b
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_index/stl_type_index.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_index/type_index_facade.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/add_const.hpp
+CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/add_cv.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/add_lvalue_reference.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/add_pointer.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/add_reference.hpp
@@ -3118,6 +3131,7 @@ CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/b
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/conditional.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/conversion_traits.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/copy_cv.hpp
+CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/cv_traits.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/decay.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/declval.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/detail/common_arithmetic_type.hpp
@@ -3201,6 +3215,7 @@ CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/b
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/remove_extent.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/remove_pointer.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/remove_reference.hpp
+CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/remove_volatile.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/type_identity.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/type_traits/type_with_alignment.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/utility.hpp
@@ -3212,6 +3227,7 @@ CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/b
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/utility/enable_if.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/utility/identity_type.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/utility/result_of.hpp
+CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/utility/swap.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/version.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/visit_each.hpp
 CMakeFiles/asynclienthttp.dir/main.cpp.o: /home/daniela/Scaricati/boost_1_74_0/boost/weak_ptr.hpp

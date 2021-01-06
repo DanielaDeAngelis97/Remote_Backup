@@ -40,4 +40,16 @@ char *base64(const std::string &input) {
     return output;
 }
 
+unsigned char *decode64(const std::string &input) {
+    const auto pl = 3 * input.length() / 4;
+    auto output = reinterpret_cast<unsigned char *>(calloc(pl + 1, 1));
+    const auto ol = EVP_DecodeBlock(output, reinterpret_cast<const unsigned char *>((const char *) input.c_str()),
+                                    input.length());
+    if (pl != ol) {
+        std::cerr << "Whoops, decode predicted " << pl << " but we got " << ol << "\n";
+        exit(EXIT_FAILURE);
+    }
+    return output;
+}
+
 

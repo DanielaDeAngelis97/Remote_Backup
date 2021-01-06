@@ -94,6 +94,7 @@ int main() {
         }
 
         if ( (std::filesystem::is_empty(std::filesystem::path(path))) &&  (paths_server.length()!=0) ){
+
             restore_client (path, base64auth, email, paths_server);
             restore=1;
         }

@@ -2,10 +2,7 @@
 // Created by daniela on 02/11/20.
 //
 
-#ifndef SERVERHTTP_MIME_TYPES_H
-#define SERVERHTTP_MIME_TYPES_H
-
-
+#pragma once
 #include <string>
 
 namespace mime_types {
@@ -16,6 +13,3 @@ namespace mime_types {
     //std::string type_to_extension(const std::string &mime_type);
 
 } // namespace mime_types
-
-
-#endif //SERVERHTTP_MIME_TYPES_H

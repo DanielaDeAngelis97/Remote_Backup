@@ -125,6 +125,7 @@ void client::handle_read_status_line(const boost::system::error_code &err) {
                                                   boost::asio::placeholders::error));
     } else {
         std::cout << "Error: " << err << "\n";
+        exit(EXIT_FAILURE);
     }
 }
 
@@ -137,12 +138,13 @@ void client::handle_read_headers(const boost::system::error_code &err) {
            //std::cout << header << "\n";
         //std::cout << "\n";
 
-        std::string a;
+        char a;
         /// Write whatever content we already have to output.
         if (response_.size() > 0) {
-            std::istream response_stream(&response_);
-           response_stream >> a;
-           response_content+=a;
+            std::istream responsec(&response_);
+            while (responsec.get(a)){
+                response_content+=a;
+            }
         }
 
         /// Start reading remaining data until EOF.
@@ -152,16 +154,18 @@ void client::handle_read_headers(const boost::system::error_code &err) {
                                             boost::asio::placeholders::error));
     } else {
         std::cout << "Error: " << err << "\n";
+        exit(EXIT_FAILURE);
     }
 }
 
 void client::handle_read_content(const boost::system::error_code &err) {
-    std::string a;
+    char a;
     if (!err) {
         /// Write all of the data that has been read so far.
-        std::istream response_stream(&response_);
-        response_stream >> a;
-        response_content+=a;
+        std::istream responsec(&response_);
+        while (responsec.get(a)){
+            response_content+=a;
+        }
 
         /// Continue reading remaining data until EOF.
         boost::asio::async_read(socket_, response_,
@@ -170,6 +174,7 @@ void client::handle_read_content(const boost::system::error_code &err) {
                                             boost::asio::placeholders::error));
     } else if (err != boost::asio::error::eof) {
         std::cout << "Error: " << err << "\n";
+        exit(EXIT_FAILURE);
     }
 }
 
@@ -231,7 +236,7 @@ void checksync(const std::string &path, const std::string &auth, const std::stri
         }
     }
 
-    std::cout << "\n" << "Synchronization terminated" << "\n";
+    std::cout << "\n" << "Synchronization terminated" << "\n\n";
 }
 
 /// Metodo POST HTTP, usato per creare o modificare i file sul Server
@@ -294,9 +299,12 @@ void reconnection(const std::string &path, const std::string &auth, const std::s
 void restore_client(const std::string &path, const std::string &auth, const std::string &email, const std::string &files_server) {
     std::cout << "\n" << "Recovery of the Client started\n\n";
 
-    std::cout << files_server << std::endl;
+    std::string files = files_server;
+    // Sostituzione slash Windows
+    std::replace(files.begin(), files.end(), '\\', '/');
     std::vector<std::string> fs;
-    boost::split(fs, files_server, boost::is_any_of(";"));
+    boost::split(fs, files, boost::is_any_of("EOF%\n"));
+
     for (int i=0; i<fs.size(); i++) {
         size_t pos = fs[i].find(path);
         if (pos != std::string::npos) {
@@ -318,6 +326,10 @@ void restore_client(const std::string &path, const std::string &auth, const std:
                 std::cout << path_for_client << " restored" << std::endl;
             }else {
                 //CREO FILE
+
+                if ( c.response_content.find("EOF%") != std::string::npos) {
+                    c.response_content.erase(c.response_content.find("EOF%"), 4);
+                }
                 std::ofstream wf(path_for_client, std::ios::out | std::ofstream::binary);
                 wf.write(c.response_content.c_str(), c.response_content.length());
                 wf.close();
