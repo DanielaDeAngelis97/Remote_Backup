@@ -94,9 +94,28 @@ int main() {
         }
 
         if ( (std::filesystem::is_empty(std::filesystem::path(path))) &&  (paths_server.length()!=0) ){
+            // Sostituzione slash Windows
+            std::replace(paths_server.begin(), paths_server.end(), '\\', '/');
+            std::vector<std::string> fs;
+            std::vector<std::string> paths_for_client;
+            boost::split(fs, paths_server, boost::is_any_of("EOF%\n"));
+            for (int i=0; i<fs.size(); i++) {
+                size_t pos = fs[i].find(path);
+                if (pos != std::string::npos) {
+                    size_t pos2 = fs[i].find(email);
+                    paths_for_client.push_back(fs[i].substr(pos2 + email.size()));
+                }
+            }
+            if(!(paths_for_client.empty())){
+                std::string answer;
+                std::cout << "On the server side there are some files, while the current folder on the client side is empty.\nDo you want to restore them? y/n ";
+                std::cin >> answer;
+                if(answer == "y"){
+                    restore_client (path, base64auth, email, paths_for_client);
+                    restore=1;
+                }
+            }
 
-            restore_client (path, base64auth, email, paths_server);
-            restore=1;
         }
         /// Create a FileWatcher instance that will check the current folder for changes every 5 seconds
         FileWatcher fw{path};

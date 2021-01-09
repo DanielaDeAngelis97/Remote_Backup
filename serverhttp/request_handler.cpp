@@ -128,17 +128,28 @@ namespace http::server3 {
                     ///Oltre ad autenticarmi, inserisco nella risposta anche i path presenti sul server, così in caso
                     ///di perdita totale dei dati su client sono capace di ripristinarli.
                     const std::string full_path = doc_root_ + "/" + email;
-                    std::string path_server;
-                    for (auto &file : std::filesystem::recursive_directory_iterator(full_path)) {
-                        path_server+= file.path().string()+"EOF%\n";
+                    std::ifstream is_login(full_path.c_str(), std::ios::in | std::ios::binary);
+                    if (is_login) {  /// Se esiste, lo rimuovo per aggiornarlo
+                        std::string path_server;
+                        for (auto &file : std::filesystem::recursive_directory_iterator(full_path)) {
+                            path_server += file.path().string() + "EOF%\n";
                         }
-                     rep.content.append(path_server);
-                    rep.status = reply::ok;
-                    rep.headers.resize(2);
-                    rep.headers[0].name = "Content-Length";
-                    rep.headers[0].value = std::to_string(rep.content.size());
-                    rep.headers[1].name = "Content-Type";
-                    rep.headers[1].value = mime_types::extension_to_type(extension);
+                        rep.content.append(path_server);
+                        rep.status = reply::ok;
+                        rep.headers.resize(2);
+                        rep.headers[0].name = "Content-Length";
+                        rep.headers[0].value = std::to_string(rep.content.size());
+                        rep.headers[1].name = "Content-Type";
+                        rep.headers[1].value = mime_types::extension_to_type(extension);
+                    } else {
+                        rep.content.append("");
+                        rep.status = reply::ok;
+                        rep.headers.resize(2);
+                        rep.headers[0].name = "Content-Length";
+                        rep.headers[0].value = std::to_string(rep.content.size());
+                        rep.headers[1].name = "Content-Type";
+                        rep.headers[1].value = mime_types::extension_to_type("");
+                    }
                 } else {
                     std::filesystem::create_directories(full_path);
                     rep.status = reply::created;
@@ -150,8 +161,7 @@ namespace http::server3 {
                 std::string path_to_control_server;
                 std::vector<std::string> paths_to_delete;
                 boost::split(paths_client, req.content, boost::is_any_of(";"));
-                std::string path = doc_root_ + "/" + email +
-                                   paths_client[0]; //rappresenta il path della cartella che abbiamo deciso di osservare lato client
+                std::string path = doc_root_ + "/" + email + paths_client[0]; //rappresenta il path della cartella che abbiamo deciso di osservare lato client
                 std::ifstream is_delete(path.c_str(), std::ios::in | std::ios::binary);
                 if (is_delete) {
                     for (auto &file : std::filesystem::recursive_directory_iterator(

@@ -83,7 +83,8 @@ void client::handle_write_request(const boost::system::error_code &err) {
                                                   boost::asio::placeholders::error));
     } else {
         std::cout << "Error: " << err.message() << "\n";
-        if (err.message() == "Connection reset by peer" || err.message() == "system:104")
+        std::cout << err.value() << "\n";
+        if ((err.message() == "Connection reset by peer") || (err.value() == 104))
             check_connection = 0; /// Connection reset by peer, quindi si ritenta la connessione.
     }
 }
@@ -125,7 +126,6 @@ void client::handle_read_status_line(const boost::system::error_code &err) {
                                                   boost::asio::placeholders::error));
     } else {
         std::cout << "Error: " << err << "\n";
-        exit(EXIT_FAILURE);
     }
 }
 
@@ -296,51 +296,39 @@ void reconnection(const std::string &path, const std::string &auth, const std::s
 }
 
 
-void restore_client(const std::string &path, const std::string &auth, const std::string &email, const std::string &files_server) {
+void restore_client(const std::string &path, const std::string &auth, const std::string &email, const std::vector<std::string> &paths_for_client) {
     std::cout << "\n" << "Recovery of the Client started\n\n";
 
-    std::string files = files_server;
-    // Sostituzione slash Windows
-    std::replace(files.begin(), files.end(), '\\', '/');
-    std::vector<std::string> fs;
-    boost::split(fs, files, boost::is_any_of("EOF%\n"));
-
-    for (int i=0; i<fs.size(); i++) {
-        size_t pos = fs[i].find(path);
-        if (pos != std::string::npos) {
-            size_t pos2 = fs[i].find(email);
-            std::string path_for_client = fs[i].substr(pos2 + email.size());
+    for (int i=0; i<paths_for_client.size(); i++) {
             boost::asio::io_context io_context;
-            client c{io_context, "127.0.0.1", path_for_client, auth, email, "GET", "", "", ""};
+            client c{io_context, "127.0.0.1", paths_for_client[i], auth, email, "GET", "", "", ""};
             io_context.run();
 
             /// Determine the file extension.
-            std::size_t last_slash_pos = path_for_client.find_last_of('/');
-            std::size_t last_dot_pos = path_for_client.find_last_of('.');
+            std::size_t last_slash_pos = paths_for_client[i].find_last_of('/');
+            std::size_t last_dot_pos = paths_for_client[i].find_last_of('.');
             std::string extension;
             if (last_dot_pos != std::string::npos && last_dot_pos > last_slash_pos) {
-                extension = path_for_client.substr(last_dot_pos + 1);
+                extension = paths_for_client[i].substr(last_dot_pos + 1);
             }
             if(extension.empty()){
-                std::filesystem::create_directories(path_for_client);
-                std::cout << path_for_client << " restored" << std::endl;
+                std::filesystem::create_directories(paths_for_client[i]);
+                std::cout << paths_for_client[i] << " restored" << std::endl;
             }else {
                 //CREO FILE
-
                 if ( c.response_content.find("EOF%") != std::string::npos) {
-                    c.response_content.erase(c.response_content.find("EOF%"), 4);
+                    c.response_content.erase(c.response_content.find("EOF%\n"), 5);
                 }
-                std::ofstream wf(path_for_client, std::ios::out | std::ofstream::binary);
+                std::ofstream wf(paths_for_client[i], std::ios::out | std::ofstream::binary);
                 wf.write(c.response_content.c_str(), c.response_content.length());
                 wf.close();
                 if (!wf.good()) {
                     std::cout << "Error occurred at writing time!" << std::endl;
                 } else {
-                    std::cout << path_for_client << " restored" << std::endl;
+                    std::cout << paths_for_client[i] << " restored" << std::endl;
                 }
             }
         }
-    }
     std::cout << "\n" << "Recovery of client terminated" << "\n";
 }
 

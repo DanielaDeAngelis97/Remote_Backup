@@ -69,7 +69,7 @@ void delete_method(const std::string &path, const std::string &auth, const std::
 void reconnection(const std::string &path, const std::string &auth, const std::string &email);
 
 /// Funzione che permette di ripristinare localmente sul Client, i file persi a causa di errori improvvisi.
-void restore_client(const std::string &path, const std::string &auth, const std::string &email, const std::string &files_server);
+void restore_client(const std::string &path, const std::string &auth, const std::string &email, const std::vector<std::string> &paths_for_client);
 
 
 #endif //ASYNCLIENTHTTP_CLIENT_H

@@ -15,26 +15,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/client.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.h" beforeDir="false" afterPath="$PROJECT_DIR$/client.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/client.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/client.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/crypto.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/crypto.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/mime_types.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/asynclienthttp.dir/mime_types.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/asynclienthttp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/asynclienthttp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crypto.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/crypto.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crypto.h" beforeDir="false" afterPath="$PROJECT_DIR$/crypto.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mime_types.h" beforeDir="false" afterPath="$PROJECT_DIR$/mime_types.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/crypto.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/crypto.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_handler.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/CMakeFiles/serverhttp.dir/request_handler.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/serverhttp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/cmake-build-debug/serverhttp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../serverhttp/connection.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/connection.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../serverhttp/crypto.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/crypto.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../serverhttp/crypto.h" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/crypto.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../serverhttp/request_handler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../serverhttp/request_handler.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,11 +72,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -110,6 +93,7 @@
       <workItem from="1609930019023" duration="10827000" />
       <workItem from="1609947308822" duration="6951000" />
       <workItem from="1609954976859" duration="1868000" />
+      <workItem from="1610206589663" duration="11094000" />
     </task>
     <servers />
   </component>
