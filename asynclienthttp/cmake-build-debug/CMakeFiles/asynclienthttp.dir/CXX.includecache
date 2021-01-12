@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/daniela/Remote_Backup/asynclienthttp/FileWatcher.h
+filesystem
+-
+chrono
+-
+thread
+-
+unordered_map
+-
+string
+-
+functional
+-
+iostream
+-
+
 /home/daniela/Remote_Backup/asynclienthttp/client.cpp
 client.h
 /home/daniela/Remote_Backup/asynclienthttp/client.h
@@ -53,6 +69,28 @@ openssl/sha.h
 -
 openssl/evp.h
 -
+
+/home/daniela/Remote_Backup/asynclienthttp/main.cpp
+iostream
+-
+ostream
+-
+string
+-
+boost/asio.hpp
+-
+FileWatcher.h
+/home/daniela/Remote_Backup/asynclienthttp/FileWatcher.h
+crypto.h
+/home/daniela/Remote_Backup/asynclienthttp/crypto.h
+list
+-
+csignal
+-
+cstdlib
+-
+client.h
+/home/daniela/Remote_Backup/asynclienthttp/client.h
 
 /home/daniela/Remote_Backup/asynclienthttp/mime_types.h
 string

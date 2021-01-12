@@ -3,7 +3,9 @@
 //
 
 #include "client.h"
-int check_connection=1;
+
+int check_connection = 1;
+
 client::client(boost::asio::io_context &io_context,
                const std::string &server, const std::string &path, const std::string &emailpasswd,
                const std::string &email,
@@ -13,7 +15,7 @@ client::client(boost::asio::io_context &io_context,
           socket_(io_context),
           statuscode(0),
           autherror(0),
-          response_content(""){
+          response_content("") {
 
     /// Form the request. We specify the "Connection: close" header so that the
     /// server will close the socket after transmitting the response.
@@ -83,7 +85,7 @@ void client::handle_write_request(const boost::system::error_code &err) {
                                                   boost::asio::placeholders::error));
     } else {
         std::cout << "Error: " << err.message() << "\n";
-        std::cout << err.value() << "\n";
+        //std::cout << err.value() << "\n";
         if ((err.message() == "Connection reset by peer") || (err.value() == 104))
             check_connection = 0; /// Connection reset by peer, quindi si ritenta la connessione.
     }
@@ -134,16 +136,16 @@ void client::handle_read_headers(const boost::system::error_code &err) {
         /// Process the response headers.
         std::istream response_stream(&response_);
         std::string header;
-        while (std::getline(response_stream, header) && header != "\r"){}
-           //std::cout << header << "\n";
+        while (std::getline(response_stream, header) && header != "\r") {}
+        //std::cout << header << "\n";
         //std::cout << "\n";
 
         char a;
         /// Write whatever content we already have to output.
         if (response_.size() > 0) {
             std::istream responsec(&response_);
-            while (responsec.get(a)){
-                response_content+=a;
+            while (responsec.get(a)) {
+                response_content += a;
             }
         }
 
@@ -163,8 +165,8 @@ void client::handle_read_content(const boost::system::error_code &err) {
     if (!err) {
         /// Write all of the data that has been read so far.
         std::istream responsec(&response_);
-        while (responsec.get(a)){
-            response_content+=a;
+        while (responsec.get(a)) {
+            response_content += a;
         }
 
         /// Continue reading remaining data until EOF.
@@ -296,39 +298,40 @@ void reconnection(const std::string &path, const std::string &auth, const std::s
 }
 
 
-void restore_client(const std::string &path, const std::string &auth, const std::string &email, const std::vector<std::string> &paths_for_client) {
+void restore_client(const std::string &path, const std::string &auth, const std::string &email,
+                    const std::vector<std::string> &paths_for_client) {
     std::cout << "\n" << "Recovery of the Client started\n\n";
 
-    for (int i=0; i<paths_for_client.size(); i++) {
-            boost::asio::io_context io_context;
-            client c{io_context, "127.0.0.1", paths_for_client[i], auth, email, "GET", "", "", ""};
-            io_context.run();
+    for (int i = 0; i < paths_for_client.size(); i++) {
+        boost::asio::io_context io_context;
+        client c{io_context, "127.0.0.1", paths_for_client[i], auth, email, "GET", "", "", ""};
+        io_context.run();
 
-            /// Determine the file extension.
-            std::size_t last_slash_pos = paths_for_client[i].find_last_of('/');
-            std::size_t last_dot_pos = paths_for_client[i].find_last_of('.');
-            std::string extension;
-            if (last_dot_pos != std::string::npos && last_dot_pos > last_slash_pos) {
-                extension = paths_for_client[i].substr(last_dot_pos + 1);
+        /// Determine the file extension.
+        std::size_t last_slash_pos = paths_for_client[i].find_last_of('/');
+        std::size_t last_dot_pos = paths_for_client[i].find_last_of('.');
+        std::string extension;
+        if (last_dot_pos != std::string::npos && last_dot_pos > last_slash_pos) {
+            extension = paths_for_client[i].substr(last_dot_pos + 1);
+        }
+        if (extension.empty()) {
+            std::filesystem::create_directories(paths_for_client[i]);
+            std::cout << paths_for_client[i] << " restored" << std::endl;
+        } else {
+            //CREO FILE
+            if (c.response_content.find("EOF%") != std::string::npos) {
+                c.response_content.erase(c.response_content.find("EOF%\n"), 5);
             }
-            if(extension.empty()){
-                std::filesystem::create_directories(paths_for_client[i]);
+            std::ofstream wf(paths_for_client[i], std::ios::out | std::ofstream::binary);
+            wf.write(c.response_content.c_str(), c.response_content.length());
+            wf.close();
+            if (!wf.good()) {
+                std::cout << "Error occurred at writing time!" << std::endl;
+            } else {
                 std::cout << paths_for_client[i] << " restored" << std::endl;
-            }else {
-                //CREO FILE
-                if ( c.response_content.find("EOF%") != std::string::npos) {
-                    c.response_content.erase(c.response_content.find("EOF%\n"), 5);
-                }
-                std::ofstream wf(paths_for_client[i], std::ios::out | std::ofstream::binary);
-                wf.write(c.response_content.c_str(), c.response_content.length());
-                wf.close();
-                if (!wf.good()) {
-                    std::cout << "Error occurred at writing time!" << std::endl;
-                } else {
-                    std::cout << paths_for_client[i] << " restored" << std::endl;
-                }
             }
         }
+    }
     std::cout << "\n" << "Recovery of client terminated" << "\n";
 }
 

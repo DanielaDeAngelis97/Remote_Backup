@@ -85,7 +85,7 @@ int main() {
     if (response == "y") {
         std::cout << "Insert path to watch: " << "\n";
         std::getline(std::cin >> std::ws, path);
-        int restore=0;
+        int restore = 0;
         std::future<void> f;
         while (!std::filesystem::is_directory(std::filesystem::path(path))) {
             std::cout << "This path doesn't exist. Retry." << "\n";
@@ -93,26 +93,27 @@ int main() {
             std::getline(std::cin >> std::ws, path);
         }
 
-        if ( (std::filesystem::is_empty(std::filesystem::path(path))) &&  (paths_server.length()!=0) ){
+        if ((std::filesystem::is_empty(std::filesystem::path(path))) && (paths_server.length() != 0)) {
             // Sostituzione slash Windows
             std::replace(paths_server.begin(), paths_server.end(), '\\', '/');
             std::vector<std::string> fs;
             std::vector<std::string> paths_for_client;
             boost::split(fs, paths_server, boost::is_any_of("EOF%\n"));
-            for (int i=0; i<fs.size(); i++) {
+            for (int i = 0; i < fs.size(); i++) {
                 size_t pos = fs[i].find(path);
                 if (pos != std::string::npos) {
                     size_t pos2 = fs[i].find(email);
                     paths_for_client.push_back(fs[i].substr(pos2 + email.size()));
                 }
             }
-            if(!(paths_for_client.empty())){
+            if (!(paths_for_client.empty())) {
                 std::string answer;
-                std::cout << "On the server side there are some files, while the current folder on the client side is empty.\nDo you want to restore them? y/n ";
+                std::cout
+                        << "On the server side there are some files, while the current folder on the client side is empty.\nDo you want to restore them? y/n ";
                 std::cin >> answer;
-                if(answer == "y"){
-                    restore_client (path, base64auth, email, paths_for_client);
-                    restore=1;
+                if (answer == "y") {
+                    restore_client(path, base64auth, email, paths_for_client);
+                    restore = 1;
                 }
             }
 
@@ -122,9 +123,9 @@ int main() {
 
         /// Se il client ha perso tutti i dati chiamo la funzione -> restore_client
         /// altrimenti -> checksync
-        if ( restore==0 ) {
+        if (restore == 0) {
             /// In modo asincrono richiamiamo la funzione checksync
-           f = std::async(std::launch::async, checksync, path, base64auth, email);
+            f = std::async(std::launch::async, checksync, path, base64auth, email);
         }
 
         bool running_ = true;

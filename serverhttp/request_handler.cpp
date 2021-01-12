@@ -194,7 +194,7 @@ namespace http::server3 {
                     std::filesystem::remove_all(std::filesystem::path(path));
                     rep.status = reply::accepted;
                 } else {
-                    rep.status = reply::not_found;
+                    rep.status = reply::accepted;
                 }
             }
         }
